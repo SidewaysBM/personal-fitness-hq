@@ -104,5 +104,72 @@
       'Stand and perform the prescribed jump, if included. Land softly before the next repetition.'
     ], 'Keep the sequence controlled. A push-up, jump or step-back should match your prescribed version.', 'https://www.crossfit.com/essentials/the-burpee', 'CrossFit', 'The Burpee', 'The reference shows a full floor-to-jump burpee. The original name does not confirm whether a push-up or jump is required.')
   };
+  const videos = {
+  "side-plank": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/TlD0CbuY_Yk?playsinline=1&rel=0"
+  },
+  "sit-up": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/1MdbYd2u9fs?playsinline=1&rel=0"
+  },
+  "single-leg-squat": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/9HNd6tmthjE?playsinline=1&rel=0"
+  },
+  "tricep-extension": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/xbNm9fRoUTw?playsinline=1&rel=0"
+  },
+  "thruster": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/u3wKkZjE8QM?playsinline=1&rel=0"
+  },
+  "push-press": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/iaBVSJm78ko?playsinline=1&rel=0"
+  },
+  "back-squat": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/QmZAiBqPvZw?playsinline=1&rel=0"
+  },
+  "pushup": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/0pkjOk0EiAk?playsinline=1&rel=0"
+  },
+  "box-jumps": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/NBY9-kTuHEk?playsinline=1&rel=0"
+  },
+  "bench": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/SCVCLChPQFY?playsinline=1&rel=0"
+  },
+  "burpee": {
+    "type": "iframe",
+    "src": "https://www.youtube-nocookie.com/embed/auBLPXO8Fww?playsinline=1&rel=0"
+  },
+  "leg-raise": {
+    "type": "video",
+    "src": "https://media.physitrack.com/exercises/56cd94da-c61d-434f-9d16-dc032f36d52a/en/video_720p.mp4"
+  },
+  "deadbug": {
+    "type": "video",
+    "src": "https://media.physitrack.com/exercises/05264c67-6da9-4d96-8828-d1144b74e46c/en/video_1280x720.mp4"
+  },
+  "lunge": {
+    "type": "video",
+    "src": "https://media.physitrack.com/exercises/51d28158-e6b1-4274-ba57-985bbd887dd2/en/video_1280x720.mp4"
+  },
+  "ring-row": {
+    "type": "video",
+    "src": "https://p001.nyc3.digitaloceanspaces.com/movements/feet_elevated_ring_row.mp4"
+  },
+  "neutral-push": {
+    "type": "iframe",
+    "src": "https://player.vimeo.com/video/399224575?dnt=1&playsinline=1"
+  }
+};
+  for (const [id, video] of Object.entries(videos)) guides[id].video = Object.freeze(video);
   window.FormGuides = Object.freeze(guides);
 })();

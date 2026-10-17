@@ -3,10 +3,12 @@
 (() => {
   'use strict';
   const path = (d, colour, width = 6) => `<path d="${d}" fill="none" stroke="${colour}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`;
-  const bar = (x, y) => path(`M${x-45} ${y}h90 M${x-35} ${y-10}v20 M${x+35} ${y-10}v20`, '#b6f47c', 5);
-  const db = (x, y) => path(`M${x-10} ${y}h20 M${x-10} ${y-6}v12 M${x+10} ${y-6}v12`, '#b6f47c', 5);
-  const box = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#29434b" stroke="#7da4ad" stroke-width="2"/>`;
-  const bench = box(35, 137, 115, 9) + path('M45 146v34 M140 146v34', '#7da4ad', 4);
+  const bar = (x, y) => path(`M${x-46} ${y}h92`, '#d8e2e6', 3) +
+    [-35,35].map(offset=>`<rect x="${x+offset-4}" y="${y-13}" width="8" height="26" rx="2" fill="#aeea79" stroke="#d5ffb0" stroke-width="1"/><rect x="${x+offset-1}" y="${y-10}" width="2" height="20" rx="1" fill="#7daf59"/>`).join('');
+  const db = (x, y) => path(`M${x-10} ${y}h20`, '#dae3e7', 3) +
+    [-10,10].map(offset=>`<path d="M${x+offset-4} ${y-7}h8l2 3v8l-2 3h-8l-2-3v-8z" fill="#b6f47c" stroke="#d5ffb0" stroke-width="1"/>`).join('');
+  const box = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#29434b" stroke="#7da4ad" stroke-width="1.5"/><path d="M${x+1} ${y+5}h${w-2} M${x+w-7} ${y+5}v${h-7}" fill="none" stroke="#577a83" stroke-width="1"/><rect x="${x+w*.35}" y="${y+h*.45}" width="${w*.3}" height="4" rx="2" fill="#10242e"/>`;
+  const bench = `<rect x="25" y="136" width="125" height="9" rx="4" fill="#577a83" stroke="#94b5bc" stroke-width="1.5"/>` + path('M43 146v34 M137 146v34 M33 181h20 M127 181h20', '#7da4ad', 4);
   // head, shoulder, hip, far limbs, near limbs, equipment, neck base optional
   const p = (head, shoulder, hip, far, near, equipment = '') => ({head, shoulder, hip, far, near, equipment});
   const upright = p([99,50],[96,70],[90,123], 'M96 73L78 95L82 115 M90 123L78 153L75 180', 'M96 73L115 94L108 111 M90 123L103 153L105 180');
@@ -33,18 +35,83 @@
     'pushup': [['Strong plank',plank],['Lower as one unit',lowPush]],
     'burpee': [['Floor phase',lowPush],['Return & jump',p([99,48],[99,68],[99,112],'M99 68L76 44L72 17 M99 112L85 140L80 161','M99 68L121 44L125 17 M99 112L114 140L120 161',path('M74 180h12 M116 180h12','#7da4ad',2))]]
   };
+  // Tapered segments preserve the reviewed joint positions while depicting a
+  // clothed athlete, recognisable hands/feet, and near/far limb depth.
+  const mix = (a,b,t) => a.map((v,i)=>v+(b[i]-v)*t);
+  const disk = (a,r,fill) => `<circle cx="${a[0]}" cy="${a[1]}" r="${r}" fill="${fill}"/>`;
+  function segment(a,b,ra,rb,fill){
+    const length=Math.hypot(b[0]-a[0],b[1]-a[1])||1;
+    const n=[-(b[1]-a[1])/length,(b[0]-a[0])/length];
+    const points=[[a[0]+n[0]*ra,a[1]+n[1]*ra],[b[0]+n[0]*rb,b[1]+n[1]*rb],[b[0]-n[0]*rb,b[1]-n[1]*rb],[a[0]-n[0]*ra,a[1]-n[1]*ra]];
+    return `<polygon points="${points.map(p=>p.join(',')).join(' ')}" fill="${fill}"/>`+disk(a,ra,fill)+disk(b,rb,fill);
+  }
+  function limbs(d,far){
+    const skin=far?'#aa8771':'#e4b99a',shorts=far?'#243449':'#354b65';
+    return d.trim().split(/\s*M/).filter(Boolean).map((part,index)=>{
+      const values=part.match(/-?\d+(?:\.\d+)?/g).map(Number);
+      const [a,b,c]=[0,2,4].map(i=>[values[i],values[i+1]]);
+      const leg=index===1;
+      let result=segment(a,b,leg?6.3:4.6,leg?4.7:3.6,skin)+segment(b,c,leg?4.5:3.5,leg?2.8:2.4,skin);
+      if(leg){
+        result+=segment(a,mix(a,b,.52),7,6.4,shorts);
+        result+=segment(mix(b,c,.8),c,3.1,3,'#d1dcdf');
+        result+=`<path d="M${c[0]-3} ${c[1]-2}q5 0 9 3l2 3h-13z" fill="${far?'#50616b':'#e5edef'}" stroke="#172a33" stroke-width=".7"/>`;
+      }else result+=disk(c,3.1,skin);
+      return result;
+    }).join('');
+  }
   function figure(pose) {
     const {head:h,shoulder:s,hip:t,far,near,equipment} = pose;
-    return equipment + path('M12 185H198','#3b535c',2) + path(far,'#789d9f',8) +
-      path(`M${s}L${t}`,'#dceee4',16) + path(`M${s}L${h}`,'#dceee4',7) +
-      path(near,'#dceee4',9) + `<circle cx="${h[0]}" cy="${h[1]}" r="10" fill="#dceee4"/>` +
-      `<circle cx="${t[0]}" cy="${t[1]}" r="9" fill="#6eab94"/>`;
+    const waist=mix(s,t,.82);
+    return `<ellipse cx="106" cy="188" rx="83" ry="3" fill="#07141e" opacity=".45"/>`+
+      path('M12 185H198','#47616d',1)+equipment+limbs(far,true)+
+      segment(s,h,4,4,'#cfa185')+
+      segment(s,waist,10.5,7.5,'#80bdad')+segment(waist,t,7.5,8.5,'#354b65')+
+      path(`M${s[0]-3} ${s[1]+7}L${waist[0]-3} ${waist[1]-4}`,'#a2d6c5',2)+
+      limbs(near,false)+disk(h,9,'#e4b99a')+
+      `<path d="M${h[0]-8} ${h[1]+1}q-4-12 7-12q10 0 10 9q-8-5-17 3" fill="#263647"/>`+
+      disk([h[0]-1,h[1]+2],2,'#cfa185');
+  }
+  const arrows={
+    'back-squat':['M156 88v39','M163 135V94'],
+    'push-press':['M155 70v34','M161 97V45'],
+    'box-jumps':['M90 77Q105 45 130 60','M184 55v28'],
+    'tricep-extension':['M139 40q20 16 0 32','M139 70q20-16 0-32'],
+    'leg-raise':['M123 167q36-2 41-30','M175 149q-3 25-30 29'],
+    'single-leg-squat':['M32 90v36','M32 132V97'],
+    'bench':['M178 63v46','M178 111V66'],
+    'ring-row':['M110 97V65','M118 57v30'],
+    'sit-up':['M39 120q14-28 40-24','M45 99q-17 10-16 33'],
+    'side-plank':['M115 145v-30',null],
+    'deadbug':['M170 98l15 31','M15 113l17 13'],
+    'thruster':['M165 100v34','M163 105V48'],
+    'neutral-push':['M156 77v29','M163 104V49'],
+    'lunge':['M128 93l33 15','M35 140V100'],
+    'pushup':['M140 105v26','M139 141V110'],
+    'burpee':['M144 119V82','M161 135V84']
+  };
+  function arrow(d){
+    if(!d)return '';
+    // Draw the head from the final segment direction; no shared SVG IDs.
+    const vals=d.match(/-?\d+(?:\.\d+)?/g).map(Number);
+    let x=vals[0],y=vals[1],dx=0,dy=0;
+    const commands=d.match(/[MLQVvlq][^MLQVvlq]*/g);
+    for(const command of commands.slice(1)){
+      const v=command.slice(1).match(/-?\d+(?:\.\d+)?/g).map(Number),c=command[0];
+      if(c==='v'){dx=0;dy=v[0];y+=dy}
+      if(c==='V'){dx=0;dy=v[0]-y;y=v[0]}
+      if(c==='l'){[dx,dy]=v;x+=dx;y+=dy}
+      if(c==='q'){dx=v[2]-v[0];dy=v[3]-v[1];x+=v[2];y+=v[3]}
+      if(c==='Q'){dx=v[2]-v[0];dy=v[3]-v[1];x=v[2];y=v[3]}
+    }
+    const length=Math.hypot(dx,dy)||1,ux=dx/length,uy=dy/length;
+    return path(d,'#b6f47c',1.8)+path(`M${x-ux*6-uy*3} ${y-uy*6+ux*3}L${x} ${y}L${x-ux*6+uy*3} ${y-uy*6-ux*3}`,'#b6f47c',1.8);
   }
   window.FormArt = (id, name, sequence = false) => {
     const frames = poses[id];
     if (!frames) return '<span class="custom-art">CUSTOM<br>MOVEMENT</span>';
     const safe = String(name).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const selected = sequence ? frames : [frames[id === 'thruster' ? 0 : 1]];
-    return `<svg viewBox="0 0 ${sequence ? 440 : 210} 220" role="img" aria-label="${safe}: ${selected.map(f=>f[0]).join(' then ')}"><title>${safe} — movement reference</title>` + selected.map(([label,pose],i)=>`<g transform="translate(${i*230},0)">${figure(pose)}${sequence ? `<text x="105" y="211" text-anchor="middle" fill="#c5d8d6" font-size="11" font-family="system-ui">${i+1}. ${label.replaceAll('&','&amp;')}</text>` : ''}</g>`).join('') + '</svg>';
+    return `<svg class="movement-illustration" viewBox="0 0 ${sequence ? 440 : 210} ${sequence?240:200}" role="img" aria-label="${safe}: ${selected.map(f=>f[0]).join(' then ')}"><title>${safe} — movement reference</title>` + selected.map(([label,pose],i)=>`<g transform="translate(${i*230},0)">${sequence?'<rect x="2" y="3" width="206" height="230" rx="14" fill="#10242e" stroke="#344d58" stroke-width="1"/>':''}${figure(pose)}${sequence?arrow(arrows[id]?.[i]):''}${sequence ? `<circle cx="19" cy="213" r="10" fill="#b6f47c"/><text x="19" y="217" text-anchor="middle" fill="#10242e" font-size="11" font-weight="700" font-family="system-ui">${i+1}</text><text x="35" y="217" fill="#dce9e7" font-size="12" font-weight="600" font-family="system-ui">${label.replaceAll('&','&amp;')}</text>` : ''}</g>`).join('') + '</svg>';
   };
 })();
