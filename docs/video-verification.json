@@ -1,0 +1,177 @@
+[
+  {
+    "id": "leg-raise",
+    "target": "https://nz.physitrack.com/home-exercise-video/hanging-leg-raise",
+    "status": "playback observed",
+    "duration": 28.201995,
+    "currentTime": 13.135692,
+    "width": 1280,
+    "height": 720,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "side-plank",
+    "target": "https://www.youtube.com/watch?v=TlD0CbuY_Yk",
+    "status": "playback observed",
+    "duration": 11.521,
+    "currentTime": 6.323391,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "sit-up",
+    "target": "https://www.youtube.com/watch?v=1MdbYd2u9fs",
+    "status": "playback observed",
+    "duration": 41.401,
+    "currentTime": 13.212043,
+    "width": 640,
+    "height": 360,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "lunge",
+    "target": "https://au.physitrack.com/home-exercise-video/reverse-lunge---alternating",
+    "status": "playback observed",
+    "duration": 35.136009,
+    "currentTime": 12,
+    "width": 1280,
+    "height": 720,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "single-leg-squat",
+    "target": "https://www.youtube.com/watch?v=9HNd6tmthjE",
+    "status": "playback observed",
+    "duration": 8.001,
+    "currentTime": 4.703411,
+    "width": 640,
+    "height": 360,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "ring-row",
+    "target": "https://programme.app/exercises/feet-elevated-ring-row/319",
+    "status": "playback observed",
+    "duration": 5.255233,
+    "currentTime": 3.546625,
+    "width": 1920,
+    "height": 1080,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "deadbug",
+    "target": "https://ca.physitrack.com/home-exercise-video/supine-dead-bugs",
+    "status": "playback observed",
+    "duration": 53.738005,
+    "currentTime": 13.137457,
+    "width": 1280,
+    "height": 720,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "tricep-extension",
+    "target": "https://www.youtube.com/watch?v=xbNm9fRoUTw",
+    "status": "playback observed",
+    "duration": 36.361,
+    "currentTime": 13.086021,
+    "width": 1280,
+    "height": 720,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "thruster",
+    "target": "https://www.youtube.com/watch?v=u3wKkZjE8QM",
+    "status": "playback observed",
+    "duration": 72.061,
+    "currentTime": 13.124326,
+    "width": 1280,
+    "height": 720,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "push-press",
+    "target": "https://www.youtube.com/watch?v=iaBVSJm78ko",
+    "status": "playback observed",
+    "duration": 62.041,
+    "currentTime": 13.117727,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "back-squat",
+    "target": "https://www.youtube.com/watch?v=QmZAiBqPvZw",
+    "status": "playback observed",
+    "duration": 59.261,
+    "currentTime": 13.117625,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "neutral-push",
+    "target": "https://sweat.com/exercises/dumbell-push-press",
+    "status": "playback observed",
+    "duration": 4.88,
+    "currentTime": 2.210706,
+    "width": 890,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "pushup",
+    "target": "https://www.youtube.com/watch?v=0pkjOk0EiAk",
+    "status": "playback observed",
+    "duration": 63.341,
+    "currentTime": 13.125158,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "box-jumps",
+    "target": "https://www.youtube.com/watch?v=NBY9-kTuHEk",
+    "status": "playback observed",
+    "duration": 44.281,
+    "currentTime": 13.068543,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "bench",
+    "target": "https://www.youtube.com/watch?v=SCVCLChPQFY",
+    "status": "playback observed",
+    "duration": 54.821,
+    "currentTime": 13.111933,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  },
+  {
+    "id": "burpee",
+    "target": "https://www.youtube.com/watch?v=auBLPXO8Fww",
+    "status": "playback observed",
+    "duration": 51.501,
+    "currentTime": 13.122176,
+    "width": 854,
+    "height": 480,
+    "checkedOn": "2026-10-17",
+    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+  }
+]
