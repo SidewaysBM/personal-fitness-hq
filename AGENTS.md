@@ -225,6 +225,9 @@ Always inspect the latest repository version rather than assuming previously sup
 - Preserve decisions already made in this project.
 - Use clear Australian English.
 - When assisting with GitHub, give simple, sequential instructions.
+- After every change, always explain what the user should do next, including how to review the update locally and publish it using the existing GitHub Desktop repository when applicable.
+- Always provide a ready-to-copy GitHub Desktop Summary (commit title) and identify which files belong in that commit. Check the current Git status first; distinguish uncommitted changes, committed changes awaiting Push origin, and updates verified live.
+- Give clear steps for checking the live website after publishing. Never recommend clearing website data as a routine refresh, because local workout records must be preserved.
 - Never repeatedly ask the user to complete the same failed process without investigating why.
 - Clearly explain technical limitations and next steps.
 - Maintain continuity between development sessions.

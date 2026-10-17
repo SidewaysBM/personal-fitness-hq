@@ -8,9 +8,10 @@ Serve this directory with any static HTTP server, for example `python3 -m http.s
 
 ## Exercise guidance
 
-All 16 original exercises have original two-position SVG diagrams, numbered technique references and links to reviewed demonstration videos. Open a library card or use **Guide** in a workout. The guide never confirms a set or changes a prescription.
+All 16 original exercises have original two-position SVG diagrams, numbered technique references and embedded demonstration videos. Open a library card or use **Guide** in a workout. The guide never confirms a set or changes a prescription.
 
 - `assets/exercise-guides.js`: instructions, exact demonstrated variations, source links and review dates.
+- `assets/exercise-videos.js`: click-to-load inline players, mobile inline playback and offline feedback.
 - `assets/exercise-art.js`: original SVG movement sequences.
 - `assets/exercise-guides.css`: responsive guide and library styling.
 - [Source review and limitations](docs/exercise-sources.md).
@@ -30,6 +31,8 @@ npm test
 
 Tests run isolated browser profiles with synthetic records. They reproduce the original startup failure, then check desktop Chrome and iPhone-sized WebKit rendering, all six views, all 16 guides, keyboard access, set confirmation/correction, timer, persistence, CSV, JSON backup/restore and existing version-2 data preservation.
 
+`node tests/embedded-videos.cjs` checks actual playback inside the app. Set `LIVE_URL=https://sidewaysbm.github.io/personal-fitness-hq/` to check the deployed site.
+
 `npm run test:videos` is an optional network test for demonstration playback. It runs separately from app tests because publishers, ads, geography and browser restrictions can affect playback. The reviewed video URLs and observation results are in `docs/video-verification.json`.
 
 ## Deploy to GitHub Pages
@@ -39,3 +42,18 @@ Deploy `index.html` **and the complete `assets/` directory together** to the exi
 After Pages finishes deploying, reload the existing website without clearing browser data. Check the dashboard, an exercise guide and an existing saved workout. The update requires no storage migration or restoration. Do not restore a backup just to install an app update.
 
 Cold offline startup and Home Screen installation are not yet implemented. The loaded page and local diagrams work without external media; videos require internet access.
+
+## Version 0.5 development update
+
+Use the profile selector to choose Ben or Georgie. Ben's original `form-fitness-v02` key is unchanged; Georgie uses `form-fitness-georgie-v02`. Each has independent programs, records, measurements, restrictions and backups. The selected profile is remembered on the device. This is separation of records, not password protection or phone-to-phone sync. Georgie's initial routines are empty and her profile measurements unset.
+
+- **Exercises → Add exercise:** create a movement with a category, repetitions or seconds, instructions, equipment, notes and an optional HTTPS demonstration link.
+- **Exercises → Import workout:** view a local photograph/screenshot alongside editable prescription rows. Automatic image extraction is not connected. Enter known details and explicitly review before importing. Existing exercise prescriptions and recorded sets are retained.
+- **Progress → Activities:** record duration and optional distance, save drafts, confirm completion and correct records. Corrections require fresh confirmation. Activities remain separate from gym-set statistics.
+- **Progress → Your training review:** deterministic, confirmed-only summaries, comparable-session progression review flags and four-week reassessment reminders. The local question interface is limited and does not generate programs or alter prescriptions.
+- **Progress → Import Apple Health:** preview an unzipped `export.xml` and individually confirm workouts. Supports workout dates, durations and recognised distance units; no direct Watch connection, heart rate, energy or route import. Limit: 20 MB and 500 new workouts per file. Processing is local.
+- **Settings:** profile-labelled JSON backups, strict restore validation and a downloadable copy of the data replaced by the last restore. Legacy unlabelled backups are treated as Ben's. Back up both profiles separately.
+
+Draft set edits now persist without being counted. A blank repetitions field cannot be confirmed. Corrupt/unsupported saved data opens recovery mode instead of being silently replaced. Failed writes roll back displayed state; conflicting edits from another tab are rejected until reload. New optional fields are added only when their features are used. Existing version-2 data is not rewritten merely by opening the app.
+
+See [development verification and publishing](docs/development-2026-10-17.md) and [Apple Health integration pathway](docs/apple-health.md). Cold offline launch, automatic screenshot extraction, generative AI, full program editing, approval-based progression changes and native HealthKit integration remain future work.

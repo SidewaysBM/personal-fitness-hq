@@ -1,0 +1,22 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+require('../assets/activities.js');require('../assets/data-store.js');
+const source = fs.readFileSync('index.html','utf8');
+const fixture = () => JSON.parse(vm.runInNewContext(source.slice(source.indexOf('const base='),source.indexOf(';let data;'))+';JSON.stringify(initial())'));
+let bytes = new Map();let fail = '';
+const storage = {getItem:k=>bytes.get(k)??null,setItem:(k,v)=>{if(k===fail)throw Error('Quota');bytes.set(k,v)}};
+let store = FormStore.open(storage,'data',fixture);
+assert.equal(bytes.size,0);store.write(fixture());
+const original=bytes.get('data');const old=FormStore.open(storage,'data',fixture);
+const changed=fixture();changed.profile.age=43;store.write(changed);
+assert.throws(()=>old.write(fixture()),/another tab/);assert.equal(JSON.parse(bytes.get('data')).profile.age,43);
+fail='data';assert.throws(()=>store.write(fixture(),true),/Quota/);assert.equal(store.value.profile.age,43);assert.equal(JSON.parse(bytes.get('data')).profile.age,43);
+fail='data-before-restore';assert.throws(()=>store.write(fixture(),true),/Quota/);assert.equal(JSON.parse(bytes.get('data')).profile.age,43);
+fail='';store.write(fixture(),true);assert.equal(JSON.parse(bytes.get('data-before-restore')).profile.age,43);
+bytes.set('data','null');store=FormStore.open(storage,'data',fixture);assert(store.error);assert.equal(store.value,null);assert.throws(()=>store.write(fixture()),/recovery/);assert.equal(bytes.get('data'),'null');
+store.write(fixture(),true);assert.equal(bytes.get('data-before-restore'),'null');
+const legacy=fixture();legacy.future={untouched:true};legacy.logs['2026-10-19']={date:'2026-10-19',sets:[{exerciseId:'deleted-exercise',index:0,reps:5,weight:null,confirmed:true}]};
+assert.deepEqual(FormStore.validate(legacy),legacy);
+for(const mutate of [v=>v.logs=null,v=>v.measurements=null,v=>v.overrides=[],v=>v.exercises[0].id="x');alert(1);//",v=>v.version=3,v=>v.logs['2026-02-30']={date:'2026-02-30',sets:[]}]){const v=fixture();mutate(v);assert.throws(()=>FormStore.validate(v));}
+assert.equal(original,JSON.stringify(fixture()));console.log('PASS storage: atomic failures, conflict rejection, recovery snapshots, strict validation and legacy preservation');

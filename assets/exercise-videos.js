@@ -32,7 +32,7 @@
       // YouTube requires an origin referrer for embedded playback (error 153 otherwise).
       media.referrerPolicy = 'strict-origin-when-cross-origin';
     }
-    media.src = guide.video.src;
+    media.src = guide.video.src + (guide.video.type === 'iframe' ? '&autoplay=1' : '');
     container.replaceChildren(media);
     media.focus();
     status.textContent = 'Use the player controls to play, pause or view fullscreen. Close the guide to return to your workout.';

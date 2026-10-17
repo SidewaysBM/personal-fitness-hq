@@ -166,8 +166,8 @@
     "src": "https://p001.nyc3.digitaloceanspaces.com/movements/feet_elevated_ring_row.mp4"
   },
   "neutral-push": {
-    "type": "iframe",
-    "src": "https://player.vimeo.com/video/399224575?dnt=1&playsinline=1"
+    "type": "video",
+    "src": "https://videos.ctfassets.net/0k812o62ndtw/2o1wEoARIkVg5QrjWW7U1S/2f71177fb31b7717cf9b36faa143e237/2124_push_press_db_neutral_phone5e9e235eb66b1c28ca701dce5c9d0f08.mp4"
   }
 };
   for (const [id, video] of Object.entries(videos)) guides[id].video = Object.freeze(video);
