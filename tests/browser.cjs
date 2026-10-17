@@ -10,7 +10,7 @@ const initialFrom=source=>vm.runInNewContext(source.slice(source.indexOf('const 
 assert.equal(initialFrom(html),initialFrom(oldHtml),'Saved-data schema and original prescriptions must remain unchanged');
 
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
-for(const file of ['assets/exercise-guides.js','assets/exercise-art.js'])new vm.Script(fs.readFileSync(file,'utf8'));
+for(const file of ['assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
 const server = http.createServer((req,res)=>{
  const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/personal-fitness-hq\//,'');
  if(relative.startsWith('assets/')&&/^assets\/[a-z-]+\.(js|css)$/.test(relative)&&fs.existsSync(relative)){
@@ -27,6 +27,8 @@ const server = http.createServer((req,res)=>{
   ['small-iphone-webkit',webkit,{}, {...devices['iPhone SE'],viewport:{width:375,height:667}}]
  ]) {
  const browser=await engine.launch(launch);const context=await browser.newContext({...device,acceptDownloads:true});const page=await context.newPage();
+ // Stub external media for deterministic interaction tests; live playback has a separate check.
+ await context.route('https://**/*',r=>{if(r.request().resourceType()==='document')return r.fulfill({contentType:'text/html',body:'<title>Embedded player fixture</title>'});});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});page.on('dialog',d=>d.accept());
  if(name==='mac-chrome'){
   await page.route('**/original',r=>r.fulfill({contentType:'text/html',body:require('node:child_process').execFileSync('git',['show','2ddb3c79cbc78a12497ef666976d4f65cad0faa1:index.html'],{encoding:'utf8'})}));
@@ -55,16 +57,26 @@ const server = http.createServer((req,res)=>{
   const link=dialog.locator('[data-video-link]');assert.match(await link.getAttribute('href'),/^https:\/\//);
   assert.equal(await link.getAttribute('rel'),'noopener noreferrer');assert.equal(await dialog.locator('iframe,video').count(),0);
   assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth),`${name}: dialog overflow`);
+  const initialUrl=page.url();
+  await dialog.getByRole('button',{name:'Play demonstration',exact:true}).click();
+  assert.equal(await dialog.locator('iframe,video').count(),1);
+  const player=dialog.locator('iframe,video');
+  assert.match(await player.getAttribute('src'),/^https:\/\//);
+  assert.equal(page.url(),initialUrl);assert.equal(context.pages().length,1);
+  if(await dialog.locator('video').count())assert.equal(await player.getAttribute('playsinline'),'');
+  assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth));
   if(i===0){
-   const target=await link.getAttribute('href');await context.route(target,r=>r.fulfill({contentType:'text/html',body:'<title>Navigation test stub</title>'}),{times:1});
-   const popupEvent=page.waitForEvent('popup');await link.click();const popup=await popupEvent;await popup.waitForLoadState();assert.equal(popup.url(),target);await popup.close();
    assert.equal(await page.getByRole('dialog').count(),1);await page.getByRole('button',{name:'Close exercise guide'}).focus();
    await page.screenshot({path:`test-results/${name.replace(/[^a-z]/gi,'')}-${device.isMobile?'mobile':'desktop'}-guide.png`,fullPage:true});
    await page.keyboard.press('Shift+Tab');assert.equal(await page.evaluate(()=>document.activeElement.tagName),'SUMMARY');
    await page.keyboard.press('Tab');assert.equal(await page.getByRole('button',{name:'Close exercise guide'}).evaluate(e=>e===document.activeElement),true);}
-  await page.keyboard.press('Escape');assert.equal(await page.getByRole('dialog').count(),0);
+  await page.keyboard.press('Escape');assert.equal(await page.getByRole('dialog').count(),0);assert.equal(await page.locator('iframe,video').count(),0);
   assert.equal(await button.evaluate(e=>e===document.activeElement),true);
  }
+ await guideButtons.first().click();await context.setOffline(true);
+ await page.getByRole('button',{name:'Play demonstration',exact:true}).click();
+ assert.match(await page.locator('[data-video-status]').innerText(),/offline/);assert.equal(await page.locator('iframe,video').count(),0);
+ await context.setOffline(false);await page.keyboard.press('Escape');
  assert.equal(arts.size,16);assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-v02')),beforeGuides);
  await page.screenshot({path:`test-results/${name}-library.png`,fullPage:true});
  await nav.getByRole('button',{name:'Workout'}).click();await page.getByLabel('Workout date').fill('2026-10-19');await page.getByLabel('Workout date').blur();
