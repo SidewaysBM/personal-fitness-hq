@@ -232,6 +232,19 @@ Always inspect the latest repository version rather than assuming previously sup
 - Clearly explain technical limitations and next steps.
 - Maintain continuity between development sessions.
 
+#### Mandatory end-of-task handover (added 18 October 2026)
+
+- At the end of every task, report where the whole project stands against all tasks and requirements given so far, not just the work completed in the latest turn. Carry forward the original handover priorities and subsequent requests; do not silently drop unfinished work.
+- Include a concise cumulative checklist: `[x]` for completed items, `[ ] Partial` for partly implemented items, and `[ ]` for outstanding items. State exactly what remains within partial items. Group related requirements for readability, but do not mark an entire phase complete when only its foundations are implemented.
+- Cover the seven handover priorities: stability/data protection; exercise and workout management; independent Ben/Georgie profiles; intelligent progression; expanded activities; coaching and screenshot-import foundations; Apple Health. Also retain cross-cutting requirements such as offline PWA support, historical prescription preservation, long-term programming, testing and deployment.
+- Distinguish implementation, automated testing, physical-device verification and live deployment. State blockers and approval-dependent work separately; do not present unverified functionality as completed.
+- Explain what changed in the current task and the recommended next development task.
+- Always finish with clear, numbered instructions for the user to complete the current task. Give the exact app, menu, button, branch and URL where relevant. Include local review, GitHub Desktop commit/merge/push and live checks only when applicable. If no action is needed, explicitly say so.
+- Check Git status before giving publishing instructions. State which changes are uncommitted, which commits await push, and what has actually been verified live. Supply a ready-to-copy GitHub Desktop Summary and the exact files for the commit; distinguish unrelated existing changes.
+- For instruction-only or documentation-only changes, say that no application deployment or workout-data restoration is needed. Never ask the user to repeat steps already confirmed complete or clear website data as a routine refresh.
+- Keep the handover concise and in plain Australian English while preserving the cumulative status and actionable completion steps.
+- Make the final handover visually clear: use a compact progress table with columns for workstream, status and remaining work, followed by a separate numbered user-action list. Use consistent colour-coded status markers with explicit text: 🟢 Complete, 🟡 Partial, ⚪ Not started, 🔴 Blocked. Never rely on colour alone. Use bold labels and whitespace to distinguish project progress, the current change, verification/publishing status and user actions. These status markers are for chat handovers, not application graphics.
+
 ### 12. Development priorities
 
 1. Fix startup errors and verify the app works on Mac and iPhone.
