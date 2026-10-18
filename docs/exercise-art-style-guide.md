@@ -2,7 +2,7 @@
 
 This is the standing design specification for all new and revised exercise poses. It accompanies the shared renderer in `assets/exercise-art.js`; reuse its rendering interface while varying the models and clothing between exercises as specified below.
 
-Last refined: 18 October 2026 — realistic isometric artwork direction requested by the user. This document is the exercise image specification; keep future updates here rather than creating a competing style specification.
+Last refined: 18 October 2026 — realistic isometric artwork direction requested by the user. This guide governs app integration, file paths, caching, tests and casting. EXERCISE_IMAGE_SPEC.md governs anatomy, load and visual QA when supplied; that file was not present in this checkout on 18 October 2026. Do not claim compliance with an unavailable specification.
 
 ## New primary direction: realistic isometric reference
 
@@ -14,7 +14,7 @@ The user has superseded the flat vector aesthetic with realistic 3D fitness artw
 - Adapt alignment to the exact exercise. A Romanian-deadlift hip-hinge cue is not a universal instruction for squats, presses or floor exercises. Artwork must not add or change clinical prescriptions.
 - Treat “medical-grade” as the requested visual style, not a certification or accuracy claim. Inspect generated anatomy, equipment grips, contacts and balance individually. Do not infer muscle activation measurements from shading.
 - Use the built-in image generation workflow. Keep final assets in `assets/exercise-images/`, not external URLs. Record the exact prompt and generation provenance in the review document. Preserve `FormArt(id, name, sequence)` as the common entry point and retain readable HTML/SVG labels.
-- Start with the existing rear-foot-elevated single-leg example, retaining its unconfirmed-variant caveat. Conversion of the other 15 exercises remains outstanding until each is produced and visually reviewed.
+- Start with the existing rear-foot-elevated single-leg example, using the confirmed bench-supported variation. All 16 prescribed exercise illustrations now use local two-phase WebP assets (under 250 KB each), with exact generation prompt/provenance and review spec in adjacent JSON sidecars. Preserve PNG masters in ignored private storage and the original generation directory.
 - Generated images do not provide exact joint coordinates; the vector contact tests apply only to the fallback vector poses. Test image loading, offline availability, clipping, accessible labels and actual desktop/mobile rendering separately.
 
 ### Average-build appearance (latest user direction)
@@ -25,15 +25,11 @@ Both models must look like ordinary adults who exercise recreationally. Use soft
 
 Assign body build and age independently of ethnic background, using the fixed briefs in `docs/exercise-art-casting.json`. Mix shorter/taller frames, slim/average/stockier builds, broader waists and natural soft midsections across and within backgrounds. Include ordinary adults in their 30s through 60s, with natural skin texture, greying or thinning hair and practical grooming. Avoid polished stock-fitness advertising faces. Do not use ethnicity as a proxy for height, weight, strength or exercise capability. Keep body proportions stable between phases; a larger build must still have plausible support and equipment contact.
 
-The applied single-leg-squat examples now use a stockier Black man around 55 and a slender East Asian woman around 45, with blue/plum tees and distinct shorts/leggings. This is one pair, not an ethnicity-to-body-size rule. Both are fictional models, not portraits of the users.
+### Exercise-specific models — supersedes profile-specific casting
 
-### Profile-specific athletes
+Assign one fictional model to each exercise, shared by Ben and Georgie. Never select appearance from the active profile or measurements. The fixed shuffled assignments in `docs/exercise-art-casting.json` include varied genders, adult ages, body sizes, backgrounds and outfits. Do not reshuffle on reload. Internal weight estimates are fictional creative briefs below 115 kg, not measured or inferred values; do not display them as facts in the app.
 
-Use male models for Ben and female models for Georgie, with varied identities across exercises, selected through the optional fourth `FormArt` argument (`male`/`female`). The app passes this explicitly from the active profile; never infer it from exercise names, prescriptions or stored measurements. Do not store artwork selection inside workout history.
-
-Generate female counterparts from the reviewed male composition to retain camera, equipment, phase and lighting consistency. Use average adult anatomy with subdued muscle definition. Vary practical full-coverage training tops, shorts or leggings, trainers and hairstyles between exercises. Secure longer hair away from equipment. These are generic models, not likenesses of either user. Do not merely change the face or add hair to a male figure.
-
-Both single-leg squat variants are now local PNG assets. Future exercise conversions require both variants, mobile review, profile-switch tests and offline image decoding. The other 15 movements remain the earlier vector fallback until converted.
+The shared single-leg-squat model is the stockier Black man around 55 (`single-leg-squat-isometric-v2.webp`). The retained female single-leg asset is historical and is no longer selected by profile. All other movements use their own `*-cast-v1.webp` assets.
 
 ### Diversity and clothing across exercises (latest direction)
 
@@ -41,25 +37,15 @@ Use a diverse cast of ordinary adult men and women across the library, including
 
 Vary ordinary gym clothing as well as colours: crew-neck training tees, sleeveless tops, shorts and full-length leggings. Use muted but distinct palettes that read against the teal background. Avoid logos, decorative costumes and clothing that hides the joints needed to understand the exercise. Do not associate a clothing style, exercise difficulty or body size with an ethnic background.
 
-- Keep male/female variants for every converted exercise. Their backgrounds and outfits may differ.
+- Use one model per exercise, independent of profile.
 - Keep the SAME individual, outfit, hairstyle and proportions in that exercise's two phases, card, guide and future corrections.
 - Preserve common camera treatment, average builds, lighting and background so the library remains cohesive.
 - Assign and record models/outfits when producing each asset; do not randomly change appearances during app use or store ethnicity in workout records.
-- Use the latest reviewed single-leg-squat pair. Introduce variety as the other exercises are converted; do not claim diversity rollout complete while those assets remain the old vector fallback.
+- Use the fixed assignments in the casting file. Keep identity stable when correcting anatomy.
 
-The fixed, randomly shuffled assignments in `docs/exercise-art-casting.json` supersede the illustrative starting briefs below. Use that file for production. Assignments are creative model briefs, not inferences about users or existing images. Do not reshuffle on reload, between phases, or when regenerating a correction. Use the latest reviewed single-leg-squat pair. Planned assignments become visible only when their assets are generated and integrated.
+### Bench press head and neck check
 
-Earlier illustrative starting briefs (superseded by the casting file):
-
-| Exercise | Male model / outfit | Female model / outfit |
-|---|---|---|
-| Back squat | Black; slate tee, charcoal shorts | East Asian; dusty blue top, graphite leggings |
-| Push press | South Asian; muted rust tee, navy shorts | Black; plum sleeveless top, charcoal shorts |
-| Box jumps | East Asian; teal tee, slate shorts | Latina; muted coral tee, navy leggings |
-| Bench press | Middle Eastern; blue tee, grey shorts | South Asian; sage tee, charcoal leggings |
-| Deadbug | Latino; charcoal tee, blue shorts | Southeast Asian; muted mauve tee, slate leggings |
-
-Use these as the beginning of a balanced cast, not a rigid ethnic quota or universal mapping. Record the actual chosen brief with each generated asset. The remaining exercises should continue the variety rather than repeat one outfit or model throughout.
+In BOTH frames, the back of the head must rest fully on the bench pad, immediately beside the shoulders with a natural short neck. Do not lift the head, stretch the neck beyond the shoulder line, or let the skull overhang the pad. Keep the gaze upward, shoulders supported and bar over the chest rather than the face. Inspect at full size and in the phone guide after every revision.
 
 ## Vector fallback design to preserve
 
@@ -151,7 +137,7 @@ Reference check: [ACE's push-up guide](https://www.acefitness.org/resources/ever
 
 ### Barbell single-leg squat reference
 
-The app currently depicts a **rear-foot-elevated example whose prescribed variant remains unconfirmed**. Retain that caveat. The athlete faces the grounded front foot, with the supporting platform behind. The torso and bar should sit visibly further forward over the working leg, not appear balanced backwards over the raised rear foot. In the corrected drawing, the bar is centred around x=56 then x=50, near the front ankle at x=56 then x=53. These are illustration coordinates, not coaching measurements or a numerical centre-of-mass calculation.
+The rear-foot-elevated (bench-supported) variation was confirmed on 18 October 2026. The earlier unsupported response was corrected. The athlete faces the grounded front foot, with the supporting platform behind. The torso and bar should sit visibly further forward over the working leg, not appear balanced backwards over the raised rear foot. In the corrected drawing, the bar is centred around x=56 then x=50, near the front ankle at x=56 then x=53. These are illustration coordinates, not coaching measurements or a numerical centre-of-mass calculation.
 
 Check both frames and the single-frame library card. The rear foot remains supported without distorting the rear leg; the front sole stays grounded. Do not reverse only the head while leaving the torso and feet oriented the other way.
 
@@ -162,7 +148,7 @@ Reference checks for front-foot loading and neutral head position: [Human Kineti
 1. Render all exercises together as a contact sheet, then inspect the changed pose at large size. Include standing, overhead, bent-knee and floor poses when changing the shared person.
 2. Render the actual library card and open guide in desktop Chrome and iPhone-sized WebKit, including a small phone viewport. Check clipping, labels, overlap and readability. Inspect the images, not only test results.
 3. Refine visible problems and render again. Finish with a fresh review of the final artwork. Keep comparison screenshots in ignored `test-results/`; do not publish private workout screenshots or temporary review images as app assets.
-4. Run `npm run test:art`, JavaScript parsing/HTML validation and the existing relevant browser tests. The artwork test renders all 16 movements as 64 simultaneous card/guide SVGs and checks finite geometry, unique local gradient IDs, toe/platform contact heights and floor-palm direction. For renderer changes, also cover all 16 guides, custom-exercise fallback, console errors, recording, persistence and backup/restore in the actual app. Geometry checks supplement visual review; they do not prove anatomical accuracy.
+4. Run `npm run test:art`, JavaScript parsing/HTML validation and the existing relevant browser tests. The artwork test renders all 16 movements as 64 simultaneous card/guide SVGs and checks all 16 distinct local image assets, profile-independent selection, finite markup, accessible labels and unique valid clipping references. For renderer changes, also cover all 16 guides, custom-exercise fallback, console errors, recording, persistence and backup/restore in the actual app. Geometry checks supplement visual review; they do not prove anatomical accuracy.
 5. Advance the artwork suffix on the **current** service-worker cache name, preserving any newer release version or unrelated edits. Keep fresh-asset fetching (`Request` with `cache:'reload'`) during service-worker installation. Run `npm run test:updates`: it covers an old installation with several tabs, stale HTTP-cached artwork, explicit activation through `update.html`, preservation of unsaved older forms, byte-identical saved profiles and offline reopening. Also inspect the user's existing preview when available: isolated browser tests alone do not prove an already-open tab received the artwork. Use the update page; never clear website data or change workout storage/schema to update artwork.
 6. State what was visually reviewed, what automated tests passed, and whether physical-device and live verification remain pending. Give exact commit files and a ready-to-copy Summary, following the project handover rules.
 

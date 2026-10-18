@@ -1,0 +1,35 @@
+{
+  "exercise": "deadbug",
+  "asset": "deadbug-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "60fedd0f8c537e1c4a6632e9f0ebaaab8ac8905411aaa16284e3a33098444f91",
+    "generation": "exec-a96a7f60-33c2-45ca-9185-aeae2bc8d7fa"
+  },
+  "generationPrompt": "Edit the right panel only: correct the deadbug to CONTRALATERAL extension. Keep the near arm extended overhead exactly as is. SWAP THE TWO LEGS: the near leg must be bent in tabletop, the far leg must extend straight and low above mat. Make the near bent thigh visibly occlude the far straight leg at the pelvis so the opposite pairing is unambiguous. Keep head resting on mat. Left panel unchanged. Same ordinary man, outfit, dark teal background, two equally sized panels, proportions and framing. No text.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: DEADBUG opposite arm/leg extension. Athlete SUPINE on mat, head shoulders and trunk grounded. Left frame both arms point vertically up, both hips/knees at right angles in tabletop with shins horizontal. Right frame left arm extends overhead close to floor while RIGHT leg extends almost straight low over floor; right arm remains vertical and LEFT hip/knee remain tabletop. Exactly two arms two legs. No lifted crunch torso, no same-side arm/leg pairing. Model: white male, age 40s, tall slender frame, ordinary muscle bulk, fictional mass 61kg. Outfit: teal tee and grey shorts, trainers. Leave 10% margin above overhead hands and weights and around body. Ordinary distinctive face and natural skin. Ensure only two arms and two legs per person.",
+    "correction": "Correct ONLY the right panel deadbug to clearly use OPPOSITE arm and leg. Keep nearer-to-camera arm extended overhead close to mat. The leg NEARER camera must stay bent in TABLETOP (hip/knee 90 degrees), and the FARTHER leg must extend straight low above floor. Farther arm stays vertical. Exactly two arms and two legs. Keep head resting naturally on mat, neck not lifted. Keep left frame unchanged and same person, clothes, view, lighting.",
+    "finalCorrection": {
+      "correction": "Edit the right panel only: correct the deadbug to CONTRALATERAL extension. Keep the near arm extended overhead exactly as is. SWAP THE TWO LEGS: the near leg must be bent in tabletop, the far leg must extend straight and low above mat. Make the near bent thigh visibly occlude the far straight leg at the pelvis so the opposite pairing is unambiguous. Keep head resting on mat. Left panel unchanged. Same ordinary man, outfit, dark teal background, two equally sized panels, proportions and framing. No text.",
+      "source": "/Users/benjaminmikus/.codex/generated_images/01a147e3-f4da-7e71-8857-68bde92cd0ba/exec-a96a7f60-33c2-45ca-9185-aeae2bc8d7fa.png"
+    }
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 54294,
+    "pixelDimensionsUnchanged": true
+  }
+}

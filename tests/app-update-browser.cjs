@@ -6,17 +6,17 @@ const server=http.createServer((req,res)=>{
   const pathname=new URL(req.url,'http://localhost').pathname;
   if(!pathname.startsWith('/personal-fitness-hq/')){res.statusCode=404;return res.end()}
   const file=pathname.slice('/personal-fitness-hq/'.length)||'index.html';
-  if(!/^(index\.html|update\.html|sw\.js|manifest\.webmanifest|assets\/(?:exercise-images\/)?[a-z0-9-]+\.(js|css|png))$/.test(file)||!fs.existsSync(file)){res.statusCode=404;return res.end()}
+  if(!/^(index\.html|update\.html|sw\.js|manifest\.webmanifest|assets\/(?:exercise-images\/)?[a-z0-9-]+\.(js|css|png|webp))$/.test(file)||!fs.existsSync(file)){res.statusCode=404;return res.end()}
   let body=fs.readFileSync(file);
   if(file==='sw.js'){
     body=workerSource.replace(/const CACHE='[^']+'/,`const CACHE='form-shell-update-fixture-${revision}'`);
     if(!revision)body=body.replace(/^self\.addEventListener\('message'.*$/m,'');
   }
   if(file==='assets/exercise-art.js'&&!revision)body=body.toString().replace('Lower over front leg','Old pose fixture');
-  if(file==='assets/offline.js'&&!revision)body="window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'))";
+  if(file==='assets/offline.js'&&!revision)body="function offlineStatus(){};window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'))";
   // Reproduce stale artwork in the browser's HTTP cache as well as the old worker.
   res.setHeader('Cache-Control',file.startsWith('assets/')&&file!=='assets/app-update.js'?'public, max-age=31536000, immutable':'no-store');
-  res.setHeader('Content-Type',({'.js':'text/javascript','.css':'text/css','.html':'text/html','.png':'image/png','.webmanifest':'application/manifest+json'})[path.extname(file)]);
+  res.setHeader('Content-Type',({'.js':'text/javascript','.css':'text/css','.html':'text/html','.png':'image/png','.webp':'image/webp','.webmanifest':'application/manifest+json'})[path.extname(file)]);
   res.end(body);
 });
 let browser;
@@ -73,7 +73,7 @@ let browser;
     await next.getByRole('img',{name:'Barbell single-leg squat: Lower over front leg',exact:true}).waitFor();
     assert.equal(await storage(next),saved);
     // Decode the actual local illustration while offline, not only its SVG label.
-    await next.evaluate(async()=>{for(const asset of ['single-leg-squat-isometric-v1.png','single-leg-squat-female-isometric-v1.png']){const image=new Image();image.src='assets/exercise-images/'+asset;await image.decode();if(image.naturalWidth<1000)throw Error('Offline illustration missing')}});
+    await next.evaluate(async()=>{for(const asset of ["back-squat-cast-v1.webp", "push-press-cast-v1.webp", "box-jumps-cast-v1.webp", "tricep-extension-cast-v1.webp", "leg-raise-cast-v1.webp", "bench-cast-v1.webp", "ring-row-cast-v1.webp", "sit-up-cast-v1.webp", "side-plank-cast-v1.webp", "deadbug-cast-v1.webp", "thruster-cast-v1.webp", "neutral-push-cast-v1.webp", "lunge-cast-v1.webp", "pushup-cast-v1.webp", "burpee-cast-v1.webp", "single-leg-squat-isometric-v2.webp"]){const image=new Image();image.src='assets/exercise-images/'+asset;await image.decode();if(image.naturalWidth<1000)throw Error('Offline illustration missing')}});
     assert.deepEqual(errors,[]);
     console.log(`PASS ${name}: legacy multi-tab update, corrected artwork, independent profiles byte-identical, unsaved older tab retained, waiting-update notice after reload/navigation, offline reopen and GitHub Pages subpath`);
     await browser.close();browser=null;

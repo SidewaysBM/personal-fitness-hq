@@ -7,14 +7,16 @@ const html = fs.readFileSync('index.html', 'utf8');
 fs.mkdirSync('test-results',{recursive:true});
 const oldHtml=require('node:child_process').execFileSync('git',['show','25f4cc6:index.html'],{encoding:'utf8'});
 const initialFrom=source=>vm.runInNewContext(source.slice(source.indexOf('const base='),source.indexOf(';let data;'))+';JSON.stringify(initial())');
-assert.equal(initialFrom(html),initialFrom(oldHtml),'Saved-data schema and original prescriptions must remain unchanged');
+const before=JSON.parse(initialFrom(oldHtml)),after=JSON.parse(initialFrom(html));
+assert.deepEqual(after.profile,{age:0,height:0,weight:0});before.profile=after.profile;
+assert.deepEqual(after,before,'Prescriptions and schema unchanged; only fresh-profile measurements are blank');
 
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
 for(const file of ['assets/vendor-sax.js','assets/vendor-fflate.js','assets/calendar.js','assets/calendar-ui.js','assets/exercise-preferences.js','assets/training-tools.js','assets/progression-rules.js','assets/period-plans.js','assets/period-ui.js','assets/training-ui.js','assets/offline.js','assets/session-changes.js','assets/program.js','assets/program-editor.js','assets/health-import.js','assets/health-history.js','assets/workout-ocr.js','assets/workout-import.js','assets/activities.js','assets/coaching.js','assets/data-store.js','assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
 const server = http.createServer((req,res)=>{if(req.url.endsWith('manifest.webmanifest')){res.setHeader('Content-Type','application/manifest+json');res.end(fs.readFileSync('manifest.webmanifest'));return}
  const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/personal-fitness-hq\//,'');
- if(['assets/exercise-images/single-leg-squat-isometric-v1.png','assets/exercise-images/single-leg-squat-female-isometric-v1.png'].includes(relative)){res.setHeader('Content-Type','image/png');res.end(fs.readFileSync(relative));return}
- if(relative.startsWith('assets/')&&/^assets\/(?:exercise-images\/)?[a-z0-9-]+\.(js|css|png)$/.test(relative)&&fs.existsSync(relative)){
+ if(/^assets\/exercise-images\/[a-z0-9-]+\.webp$/.test(relative)&&fs.existsSync(relative)){res.setHeader('Content-Type','image/webp');res.end(fs.readFileSync(relative));return}
+ if(relative.startsWith('assets/')&&/^assets\/(?:exercise-images\/)?[a-z0-9-]+\.(js|css|png|webp)$/.test(relative)&&fs.existsSync(relative)){
   res.setHeader('Content-Type',relative.endsWith('.js')?'text/javascript':'text/css');res.end(fs.readFileSync(relative));
  }else if(relative===''||relative==='original'){res.setHeader('Content-Type','text/html');res.end(html)}
  else {res.statusCode=404;res.end('Not found')}
@@ -104,7 +106,7 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  let csvEvent=page.waitForEvent('download');await page.getByRole('button',{name:'Export sets CSV'}).click();const csvDownload=await csvEvent;const csv=fs.readFileSync(await csvDownload.path(),'utf8');assert.match(csv,/2026-10-19/);assert.match(csv,/"5","35","true"/);
  await page.locator('#age').fill('43');await page.getByRole('button',{name:'Save profile'}).click();assert.equal(await page.locator('#age').inputValue(),'43');
  await page.locator('input[type=file]').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(backup))});
- await page.waitForFunction(()=>document.querySelector('#age')?.value==='42');assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('form-fitness-v02'))),backup);
+ await page.waitForFunction(age=>document.querySelector('#age')?.value===String(age),backup.profile.age);assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('form-fitness-v02'))),backup);
  await page.reload();assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('form-fitness-v02'))),backup);
  assert.deepEqual(errors,[]);console.log(`PASS ${name}: startup, six views, no horizontal overflow, set confirmation/correction, reload persistence, timer, finish, backup download and restore; no console errors`);
 
@@ -158,7 +160,7 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),null);
  await page.getByRole('button',{name:'View guide: Barbell single-leg squat',exact:true}).click();
  const female=page.getByRole('dialog').locator('svg image');assert.equal(await female.count(),2);
- assert.match(await female.first().getAttribute('href'),/female-isometric/);
+ assert.match(await female.first().getAttribute('href'),/single-leg-squat-isometric-v2.webp$/); // Exercise identity is shared across profiles.
  await page.evaluate(async()=>{const img=new Image();img.src=document.querySelector('[role=dialog] image').getAttribute('href');await img.decode()});
  await page.screenshot({path:`test-results/${name}-georgie-art.png`});await page.keyboard.press('Escape');
  assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),null);
@@ -179,7 +181,7 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  await page.waitForFunction(()=>document.querySelector('input[type=file]').value==='');
  assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),georgieBytes);
  await page.getByLabel('Active profile').selectOption('Ben');assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-v02')),benBytes);
- assert.match(await page.locator('[data-guide=single-leg-squat] image').getAttribute('href'),/\/single-leg-squat-isometric-v1.png$/);
+ assert.match(await page.locator('[data-guide=single-leg-squat] image').getAttribute('href'),/\/single-leg-squat-isometric-v2.webp$/);
  await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'All reports',exact:true}).click();await page.getByRole('heading',{name:'Your training review'}).waitFor();
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:`test-results/${name}-review.png`,fullPage:true});

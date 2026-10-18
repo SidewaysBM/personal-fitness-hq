@@ -6,6 +6,15 @@ let browser;
   for(const file of ['assets/exercise-art.js','assets/exercise-guides.js'])vm.runInNewContext(fs.readFileSync(file,'utf8'),sandbox);
   const ids=Object.keys(sandbox.window.FormGuides);
   assert.equal(ids.length,16);
+  const assets=new Set();
+  for(const id of ids){
+    const href=sandbox.window.FormArt(id,id,true).match(/href="([^"]+)"/)[1];
+    assets.add(href);
+    const bytes=fs.readFileSync(href);
+    assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');assert(bytes.length<=250000);
+    for(const profile of ['male','female'])assert.equal(sandbox.window.FormArt(id,id,true,profile).match(/href="([^"]+)"/)[1],href);
+  }
+  assert.equal(assets.size,16,'Each exercise has its own fixed model asset');
   let markup='';
   for(let copy=0;copy<2;copy++)for(const id of ids){
     markup+=`<section data-exercise="${id}">${sandbox.window.FormArt(id,id,true)}${sandbox.window.FormArt(id,id,false)}</section>`;
@@ -21,24 +30,13 @@ let browser;
       const ref=el.getAttribute('fill').match(/^url\(#(.+)\)$/);
       if(ref&&!svg.querySelector(`[id="${ref[1]}"]`))broken.push(ref[1]);
     }
-    const contacts=[];
-    for(const shoe of document.querySelectorAll('.athlete-shoe[data-support]:not([data-support="pose"])')){
-      const kind=shoe.dataset.support;
-      // These are visible sole contact points, measured in each panel's SVG coordinates.
-      const p=new DOMPoint(kind==='heel-platform'?-4.7:11,kind==='heel-platform'?3.5:6).matrixTransform(shoe.getCTM());
-      contacts.push({kind,y:p.y,x:p.x%230});
+    for(const image of document.querySelectorAll('svg image')){
+      const ref=image.getAttribute('clip-path').match(/^url\(#(.+)\)$/);
+      if(!ref||!image.closest('svg').querySelector(`[id="${ref[1]}"]`))broken.push('missing image clip');
     }
-    const palms=[...document.querySelectorAll('.athlete-palm')].map(palm=>palm.getCTM().a);
-    return {duplicates:allIds.length-new Set(allIds).size,broken,contacts,palms,svgs:document.querySelectorAll('svg').length};
+    return {duplicates:allIds.length-new Set(allIds).size,broken,svgs:document.querySelectorAll('svg').length,images:document.querySelectorAll('svg image').length,labels:[...document.querySelectorAll('svg')].every(s=>s.getAttribute('aria-label'))};
   });
-  assert.equal(report.svgs,64);assert.equal(report.duplicates,0);assert.deepEqual(report.broken,[]);
-  assert(report.contacts.length>0&&report.palms.length>0);
-  for(const contact of report.contacts){
-    const surface=contact.kind==='toe'?186:contact.kind==='rear-platform'?135:113;
-    assert(Math.abs(contact.y-surface)<.01,`${contact.kind} misses surface: ${contact.y} vs ${surface}`);
-    assert(contact.x>10&&contact.x<200,`${contact.kind} outside panel`);
-  }
-  assert(report.palms.every(scale=>scale<0),'Floor palms must point towards the head in the left-facing push-up/burpee poses');
+  assert.equal(report.svgs,64);assert.equal(report.images,96);assert.equal(report.duplicates,0);assert.deepEqual(report.broken,[]);assert(report.labels);
   assert.deepEqual(errors,[]);
-  console.log('PASS artwork: all 16 movements / 64 simultaneous SVGs, finite geometry, unique local shading, exact toe/platform contacts and forward-facing floor palms');
+  console.log('PASS artwork: 16 distinct local WebPs, profile-independent assignments, 64 simultaneous SVGs / 96 frames, unique valid clips and accessible labels; anatomical review is visual');
 })().catch(error=>{console.error(error);process.exitCode=1}).finally(async()=>{await browser?.close()});

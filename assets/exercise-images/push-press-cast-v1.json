@@ -1,0 +1,31 @@
+{
+  "exercise": "push-press",
+  "asset": "push-press-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "6e2a51d5cda1c6187e56e540ed854318cdb96f54e9252333b02d98e74070d308",
+    "generation": "exec-606e5c59-61a4-44fc-97f2-03fa24a4fd82"
+  },
+  "generationPrompt": "Keep the same person, clothes and exercise phases. Zoom OUT in BOTH panels enough to show the entire overhead barbell and round plates, with empty margin above the top of plates. Do not crop equipment. Same two equal square panels and dark teal background.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Barbell PUSH PRESS. Left frame shallow knee dip, upright trunk, bar at FRONT of shoulders in front rack, elbows forward. Right frame stand tall, knees and hips extended, both arms extended overhead holding same bar above shoulders over midfoot, no second dip. Model: East Asian female, age 30s, tall slender frame, ordinary muscle bulk, fictional design mass 57kg. Outfit: teal tee and grey shorts, ordinary trainers, secure any long hair. Respect this model, use realistic facial variation.",
+    "correction": "Keep the same person, clothes and exercise phases. Zoom OUT in BOTH panels enough to show the entire overhead barbell and round plates, with empty margin above the top of plates. Do not crop equipment. Same two equal square panels and dark teal background."
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 56634,
+    "pixelDimensionsUnchanged": true
+  }
+}

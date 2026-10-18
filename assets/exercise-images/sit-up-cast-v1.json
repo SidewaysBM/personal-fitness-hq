@@ -1,0 +1,31 @@
+{
+  "exercise": "sit-up",
+  "asset": "sit-up-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "c43d42250823b8decd90a12cf687b45f9cf50342843589076c9f138dbcba0695",
+    "generation": "exec-e03c3126-25c9-44aa-8c25-a0dee53e9712"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BENT-KNEE SIT-UP. Left frame lying supine on floor mat, knees bent, both feet flat, arms crossed gently on chest. Right frame curl trunk upwards towards bent knees, hips remain on mat and feet planted, arms remain crossed. Neck aligned naturally, no hands pulling head. Model: East Asian male, age 30s, shorter slim frame, soft definition, fictional mass 69kg. Outfit: muted coral tee and navy training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BENT-KNEE SIT-UP. Left frame lying supine on floor mat, knees bent, both feet flat, arms crossed gently on chest. Right frame curl trunk upwards towards bent knees, hips remain on mat and feet planted, arms remain crossed. Neck aligned naturally, no hands pulling head. Model: East Asian male, age 30s, shorter slim frame, soft definition, fictional mass 69kg. Outfit: muted coral tee and navy training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 60392,
+    "pixelDimensionsUnchanged": true
+  }
+}

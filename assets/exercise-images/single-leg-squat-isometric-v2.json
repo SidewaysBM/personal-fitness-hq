@@ -1,0 +1,29 @@
+{
+  "exercise": "single-leg-squat",
+  "asset": "single-leg-squat-isometric-v2.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "52140ef314d5512bba6342723ad751e1d024f8fa63c51186bbce360a9e5b87f5",
+    "generation": "exec-848a8228-e196-4c41-ad4f-d5868902ffef",
+    "source": "single-leg-squat-isometric-v1.png"
+  },
+  "generationPrompt": "Use case: precise-object-edit. Edit this two-panel FORM rear-foot-elevated barbell split squat illustration. Preserve the same fictional stocky Black man in his mid-50s, soft ordinary build, blue tee and charcoal shorts, face, two square panels, dark teal background, camera, neutral head alignment, high bar across upper trapezius, grounded front foot and rear instep on bench. Correct ONLY: enlarge barbell plates to realistic standard 450 mm/20 kg-scale diameter, approximately one quarter of standing adult height, same size in both panels; maintain horizontal balanced bar, visible collars and natural closed grips. Replace cushioned running shoes with simple grey flat-soled gym trainers in both frames. Simplify bench to a credible stable padded bench with two normal T feet, no extra rear protruding rod. At top keep working knee softly extended, not hyperextended. Keep lowered pose controlled and same depth; do not invent clinical range. Leave generous margins so every plate, foot and bench fits in its own square. No text, no labels, no arrows. Image load is illustrative, not a prescribed weight.",
+  "promptHistory": null,
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 84642,
+    "pixelDimensionsUnchanged": true
+  }
+}

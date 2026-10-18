@@ -221,19 +221,19 @@
     const length=Math.hypot(dx,dy)||1,ux=dx/length,uy=dy/length;
     return path(d,'#b6f47c',1.8)+path(`M${x-ux*6-uy*3} ${y-uy*6+ux*3}L${x} ${y}L${x-ux*6+uy*3} ${y-uy*6-ux*3}`,'#b6f47c',1.8);
   }
-  window.FormArt = (id, name, sequence = false, athlete = 'male') => {
+  window.FormArt = (id, name, sequence = false) => {
     const frames = poses[id];
     if (!frames) return '<span class="custom-art">CUSTOM<br>MOVEMENT</span>';
     const safe = String(name).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     // Reviewed local 3D reference; preserve the same accessible frame interface.
     // Each panel clips one half of the original asset without changing its pixels.
-    if(id==='single-leg-squat'){
+    if(frames){
       const serial=++artworkSerial;
-      const asset=athlete==='female'?'single-leg-squat-female-isometric-v1.png':'single-leg-squat-isometric-v1.png';
+      const asset=id==='single-leg-squat'?'single-leg-squat-isometric-v2.webp':id+'-cast-v1.webp';
       const indices=sequence?[0,1]:[1];
       return `<svg class="movement-illustration isometric-art" viewBox="0 0 ${sequence?440:210} ${sequence?240:200}" role="img" aria-label="${safe}: ${indices.map(i=>frames[i][0]).join(' then ')}"><title>${safe} — three-quarter movement reference</title>`+indices.map((frame,i)=>{
         const clip=`form-iso-${serial}-${i}`;
-        return `<g transform="translate(${i*230},0)"><defs><clipPath id="${clip}"><rect x="8" y="3" width="194" height="194" rx="8"/></clipPath></defs><image class="exercise-reference-image" href="assets/exercise-images/${asset}" x="${8-frame*194}" y="3" width="388" height="194" preserveAspectRatio="xMidYMid meet" clip-path="url(#${clip})"/>${sequence?`<circle cx="19" cy="213" r="10" fill="#b6f47c"/><text x="19" y="217" text-anchor="middle" fill="#10242e" font-size="11" font-weight="700" font-family="system-ui">${i+1}</text><text x="35" y="217" fill="#dce9e7" font-size="12" font-weight="600" font-family="system-ui">${frames[frame][0]}</text>`:''}</g>`;
+        return `<g transform="translate(${i*230},0)"><defs><clipPath id="${clip}"><rect x="9" y="4" width="192" height="192" rx="8"/></clipPath></defs><image class="exercise-reference-image" href="assets/exercise-images/${asset}" x="${8-frame*194}" y="3" width="388" height="194" preserveAspectRatio="xMidYMid meet" clip-path="url(#${clip})"/>${sequence?`<circle cx="19" cy="213" r="10" fill="#b6f47c"/><text x="19" y="217" text-anchor="middle" fill="#10242e" font-size="11" font-weight="700" font-family="system-ui">${i+1}</text><text x="35" y="217" fill="#dce9e7" font-size="12" font-weight="600" font-family="system-ui">${frames[frame][0]}</text>`:''}</g>`;
       }).join('')+'</svg>';
     }
     const defs=materials(`form-art-${++artworkSerial}`);

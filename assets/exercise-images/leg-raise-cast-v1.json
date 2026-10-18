@@ -1,0 +1,31 @@
+{
+  "exercise": "leg-raise",
+  "asset": "leg-raise-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "2abae56bf358c1304186f70aaa836c6863026e53bb8f79601583ab47efe380af",
+    "generation": "exec-34378767-b64f-4374-92c7-c300ea71feff"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: HANGING STRAIGHT-LEG RAISE. Left frame hanging still from a fixed horizontal pullup bar with two hands overhead, arms extended, legs hanging straight below and feet clear of floor. Right frame same grip, arms straight, both knees straight and legs together extending forwards horizontally from hips to form an L. No swinging or toes-to-bar; show full overhead bar and feet. Model: white female, age 30s, compact stocky frame, soft waist, fictional mass 96kg. Outfit: sage sleeveless top and graphite training bottoms, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: HANGING STRAIGHT-LEG RAISE. Left frame hanging still from a fixed horizontal pullup bar with two hands overhead, arms extended, legs hanging straight below and feet clear of floor. Right frame same grip, arms straight, both knees straight and legs together extending forwards horizontally from hips to form an L. No swinging or toes-to-bar; show full overhead bar and feet. Model: white female, age 30s, compact stocky frame, soft waist, fictional mass 96kg. Outfit: sage sleeveless top and graphite training bottoms, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 62922,
+    "pixelDimensionsUnchanged": true
+  }
+}

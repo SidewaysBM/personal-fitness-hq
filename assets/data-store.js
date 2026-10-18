@@ -11,7 +11,7 @@
     require(object(v.profile) && ['age', 'height', 'weight'].every(k => number(v.profile[k])), 'profile');
     require(Array.isArray(v.exercises) && v.exercises.length > 0, 'exercises');
     function prescription(e) {
-      require(Number.isInteger(e.sets) && e.sets >= 0 && e.sets <= 100 && number(e.reps) && number(e.rest), 'exercise prescription');
+      require(Number.isInteger(e.sets) && e.sets >= 0 && e.sets <= 100 && number(e.reps) && (e.rest === null || number(e.rest)), 'exercise prescription');
       require(typeof e.kind === 'string' && Array.isArray(e.weights) && e.weights.every(w => w === null || w === '' || number(w)), 'prescribed weights');
     }
     function exercises(items) {

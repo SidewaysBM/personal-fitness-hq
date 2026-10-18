@@ -20,21 +20,12 @@ The app must combine personalised training programs, interactive scheduling, ver
 
 This is a long-term software development project, not simply a workout planner. Prioritise functional, reliable software over mockups or feature descriptions.
 
-### 2. User profile
+### 2. Private context
 
-- Male, 42 years old
-- Height: 191 cm
-- Starting weight: approximately 95 kg
-- Training experience: Intermediate
-- Training environment: Fully equipped gym
-- Schedule: Monday, Wednesday and Friday
-- Workout duration: 45–60 minutes
-- Primary goals: Strength, muscle development and general fitness
-- Initial program start: 13 October 2026
-
-The user has a degenerative cervical spine condition and has received physiotherapist guidance. Respect existing exercise prescriptions and allow restrictions to be added later.
-
-Do not implement routine pain tracking or require pain scores.
+Personal context is kept only in the gitignored `/private/project-context.md`.
+Read it locally when needed; never copy its contents into tracked files, release artifacts or logs.
+AGENTS.md must remain public-safe. Never list AGENTS.md or anything under /private/ as a user commit file.
+Respect saved exercise prescriptions and clinician guidance. Do not require routine pain scores.
 
 ### 3. Existing physiotherapy exercises
 

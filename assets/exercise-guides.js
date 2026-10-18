@@ -37,12 +37,12 @@
       'Pause without swinging your trunk or throwing your head backwards.',
       'Lower your legs slowly to a still hang before repeating.'
     ], 'Control the lowering phase; this is not a kipping toes-to-bar movement.', 'https://nz.physitrack.com/home-exercise-video/hanging-leg-raise', 'Physitrack', 'Hanging leg raise', 'The source uses a neutral grip; retain the grip prescribed by your physiotherapist.'),
-    'single-leg-squat': guide('Rear-foot-elevated barbell example — variant unconfirmed', [
-      'First match the setup to your clinician’s instructions. This example uses a rear foot on a bench, not a free-standing pistol squat.',
+    'single-leg-squat': guide('Rear-foot-elevated barbell split squat', [
+      'Use the confirmed bench-supported setup, with the rear foot resting on a secure bench.',
       'For that variation, set a secure bench behind you and a bar across your upper back. Plant the working foot and support the rear foot on the bench.',
       'Bend the front hip and knee to lower with control, keeping the front foot grounded.',
       'Press through the working foot to stand. Follow your prescribed depth, loading and side order.'
-    ], 'Do not adopt this variation unless it matches your prescription.', 'https://www.youtube.com/watch?v=9HNd6tmthjE', 'FITASTIC', 'Barbell Single Leg Squat', 'This name is used for both rear-foot-elevated squats and unsupported single-leg squats. The screenshots are unavailable here, so the intended variation cannot be verified. This is a labelled reference example, not a substitution.'),
+    ], 'Follow your prescribed depth, loading and side order.', 'https://www.youtube.com/watch?v=9HNd6tmthjE', 'FITASTIC', 'Barbell Single Leg Squat', 'Bench-supported variation confirmed. The illustration does not establish prescribed depth or load.'),
     'bench': guide('Flat barbell bench press', [
       'Set the rack safeties or arrange a spotter. Lie on the bench with feet supported and an even grip on the bar.',
       'Unrack with control and position the bar above your chest with arms extended.',

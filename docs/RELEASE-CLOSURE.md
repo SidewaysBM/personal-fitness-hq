@@ -11,7 +11,7 @@ Green implementation means the stated local feature is implemented and its relev
 | Workstream | Implementation status | Completion evidence / remaining work |
 |---|---|---|
 | 1. Stability and data protection | [x] 🟢 Complete | Startup, atomic persistence, conflict guards, legacy compatibility, JSON restore/recovery and CSV covered by full suite. |
-| 2. Exercise/workout management | [ ] Partial — 🟡 Partial | Custom library, instructions, recording, substitutions, timers and calendars tested. Separate athlete artwork rollout and exact exercise-variant/source gaps remain; do not invent missing physio details. |
+| 2. Exercise/workout management | [ ] Partial — 🟡 Partial | Custom library, instructions, recording, substitutions, timers and calendars tested. All 16 compact raster guides are implemented and checked; exact exercise-variant/source gaps remain; do not invent missing physio details. |
 | 3. Ben/Georgie profiles | [x] 🟢 Complete | Independent programmes, schedules, histories and backups covered by browser tests. Cloud synchronisation is not enabled. |
 | 4. Deterministic progression | [x] 🟢 Complete for original Phase 4 | Confirmed-evidence calculations, session reviews, four-week checkpoints, explicit proposal approval, preference safeguards and frozen historical plans tested. No claim of autonomous clinical readiness. |
 | 5. Expanded activities | [x] 🟢 Complete | Flexible categories/custom activities, actual confirmation, correction and reporting tested. |
@@ -35,7 +35,7 @@ The original handover and current guide definitions were inspected. There is no 
 
 The existing guide caveats identify the finite source questions:
 
-- **Barbell single-leg squat:** rear-foot-elevated versus unsupported variation is unconfirmed. The existing rear-foot-elevated illustration/video is labelled as an example.
+- **Barbell single-leg squat:** bench-supported/rear-foot-elevated variation confirmed on 18 October 2026; prescribed depth and other missing parameters still require source material.
 - **Overhead tricep extension:** equipment and one-arm/two-arm setup are unconfirmed.
 - **Side plank:** straight-leg versus bent-knee prescription is not established by the name alone.
 - **Burpee:** floor/push-up/jump components are not established by the name alone.
@@ -59,12 +59,16 @@ No missing requirement is cancelled by this document. New feature ideas are reco
 
 The release audit now has one command: `npm run test:release`. It records the current application/test files, runs application/update/artwork compatibility checks, then rejects any changed candidate. `npm run check:release` performs packaging and recognised private-path checks alone. The 0.19.0 candidate passed the combined run and unchanged-file check; results are recorded in `docs/development-2026-10-18-release-gate.md`. Passing this command does not sign off unfinished illustration conversions or physical/source/live checks.
 
-## Current checkout and user action
+## Security and artwork release candidate — 18 October 2026
 
-Documentation-only update. No application deployment or workout-data restoration is needed. All combined work remains uncommitted on codex/session-changes. HEAD matches the fetched origin/main reference, with zero commits ahead; no fresh live verification was performed.
+The current work includes public-safe local instructions, private-context isolation, content/path release guards, optional per-profile PIN encryption with tested migration, CSP-compatible actions, backup reminders and an allowlisted static hosting build. The original seven priorities above remain the cumulative baseline; new security requirements do not erase their earlier completion evidence.
 
-Files changed by this status-closure task: AGENTS.md, docs/RELEASE-CLOSURE.md, docs/RELEASE-CHECKLIST.md. Earlier feature and artwork files are separate existing changes in the shared checkout.
+- [x] Local security implementation and focused desktop/iPhone browser checks.
+- [x] Final combined 0.20.0 regression passed: `npm run test:release` (application, privacy, update/offline and artwork suites). Candidate fingerprint `0d62496918fb9da1b46fdf7c0f2c9850cd43fbffa786e88bd52f438eedd056e9` unchanged.
+- [ ] Physical iPhone Home Screen, real-record/backup and real Health-export verification.
+- [ ] Repository visibility change, historical exposure decision, full Access addresses, account setup and live deployment.
+- [ ] Original exercise-source gaps and missing EXERCISE_IMAGE_SPEC.md verification. Bench-supported single-leg variant is confirmed; do not reopen that question.
 
-Ready-to-copy GitHub Desktop Summary: `Clarify release completion criteria and outstanding verification`
+Use SECURITY-HOSTING.md for backup, repository privacy and Cloudflare Access steps. No real profile backup, repository visibility change, history rewrite or live deployment was performed by these local checks. Generative coaching, broader autonomous programming, native Apple Health synchronisation and cross-device sync remain separate outstanding extensions above.
 
-No user action is requested now. The initial source/variant audit is recorded above. Next is the final combined candidate audit when the artwork is ready; unresolved source facts stay explicit. Commit and publishing remain deferred to the requested final review.
+All release changes remain uncommitted on `codex/session-changes`. Remote references fetched and final status checked: zero commits ahead/behind origin/codex/session-changes; one existing feature commit ahead of origin/main. The existing feature commit on this branch is already pushed to its remote branch but has not been merged to `main`. The combined checks passed; one consolidated review is ready via RELEASE-0.20.0.md; do not request an incremental publish from the parallel artwork chat.

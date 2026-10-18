@@ -16,3 +16,6 @@ test-results/
 /form-georgie*.json
 /form-ben*.csv
 /form-georgie*.csv
+
+# Allowlisted static deployment output
+/dist/

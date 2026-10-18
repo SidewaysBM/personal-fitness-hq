@@ -1,0 +1,31 @@
+{
+  "exercise": "box-jumps",
+  "asset": "box-jumps-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "7341c15a3327d88db32b92b262989fba4211b7fcda134662a0e682231fdd4d37",
+    "generation": "exec-69150857-b1a7-41db-97fc-f22ed0c899c2"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BOX JUMP. Left frame athlete on floor facing a stable low plyometric box, hip/knee flexion preparing takeoff, arms swung back. Right frame same athlete landing with BOTH feet entirely on TOP of same box, knees flexed absorbing landing, arms forward. No weights. Model: Black female, age 40s, broad frame, fuller midsection, fictional design mass 89kg. Outfit: teal tee and grey shorts, ordinary trainers, secure any long hair. Respect this model, use realistic facial variation.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BOX JUMP. Left frame athlete on floor facing a stable low plyometric box, hip/knee flexion preparing takeoff, arms swung back. Right frame same athlete landing with BOTH feet entirely on TOP of same box, knees flexed absorbing landing, arms forward. No weights. Model: Black female, age 40s, broad frame, fuller midsection, fictional design mass 89kg. Outfit: teal tee and grey shorts, ordinary trainers, secure any long hair. Respect this model, use realistic facial variation.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 70256,
+    "pixelDimensionsUnchanged": true
+  }
+}
