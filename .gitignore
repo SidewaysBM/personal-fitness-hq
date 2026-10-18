@@ -1,3 +1,18 @@
 node_modules/
 test-results/
 .DS_Store
+
+# Private local material must stay separate from the public app.
+.env
+.env.*
+!.env.example
+/sources/
+/private/
+/private-data/
+/backups/
+/export.xml
+/export.zip
+/form-ben*.json
+/form-georgie*.json
+/form-ben*.csv
+/form-georgie*.csv

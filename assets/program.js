@@ -11,12 +11,15 @@
   if(date<'2026-10-13'&&!(data.scheduleChanges||[]).some(r=>r.from<=date))return null;
   return week(data,profile,date)[new Date(date+'T12:00:00').getDay()]||null;
  }
- function plan(data,profile,date){
+ function plan(data,profile,date,sessionId){
+  if(sessionId){const extra=data.extraSessions?.find(s=>s.id===sessionId&&s.date===date);if(!extra)throw Error('Session not found.');return clone(extra.log.plan)}
   const log=data.logs[date];if(log?.plan)return clone(log.plan);
   const routine=data.routines.find(r=>r.id===scheduled(data,profile,date));
   if(!routine&&!log?.sets.length)return null;
   // Old records did not store prescriptions. Retain a labelled reference, never claim reconstruction.
   const legacy=Boolean(log?.sets.length);
+  const period=!legacy&&(data.periodPlans||[]).find(p=>p.routine===routine?.id&&p.from<=date&&p.to>=date);
+  if(period)return clone(period.plan);
   const ids=legacy?[...new Set(log.sets.map(s=>s.exerciseId))]:(routine?.ids||[]);
   const exercises=ids.map(id=>{
    const original=data.exercises.find(e=>e.id===id);
@@ -34,7 +37,8 @@
  function setSchedule(data,profile,from,days){
   const next=preserve(data,profile);next.scheduleChanges=(next.scheduleChanges||[]).filter(r=>r.from!==from).concat({from,days:clone(days)}).sort((a,b)=>a.from.localeCompare(b.from));return next;
  }
- function record(data,profile,date){
+ function record(data,profile,date,sessionId){
+  if(sessionId){const extra=data.extraSessions?.find(s=>s.id===sessionId&&s.date===date);if(!extra)throw Error('Session not found.');return extra.log}
   if(!data.logs[date]){const snapshot=plan(data,profile,date);if(!snapshot)throw Error('Choose a scheduled workout first.');data.logs[date]={date,sets:[],plan:snapshot}}
   else if(!data.logs[date].plan){const snapshot=plan(data,profile,date);if(snapshot)data.logs[date].plan=snapshot}
   return data.logs[date];
