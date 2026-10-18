@@ -147,6 +147,8 @@ Avoid basic spreadsheet-style interfaces, generic emoji graphics, cluttered scre
 
 Use original or appropriately licensed graphics and media.
 
+For every new or revised exercise pose, read and follow [the exercise artwork design guide](docs/exercise-art-style-guide.md). Reuse the shared athlete renderer and visual style, verify head direction, support contacts and apparent load balance, and render/review/refine the actual diagrams on desktop and mobile before completion. Keep exercise variants and prescriptions separate from artwork changes.
+
 ### 8. Technical architecture
 
 GitHub repository:
@@ -233,6 +235,10 @@ Always inspect the latest repository version rather than assuming previously sup
 - Maintain continuity between development sessions.
 
 #### Mandatory end-of-task handover (added 18 October 2026)
+
+- Use `docs/RELEASE-CLOSURE.md` for the finite release completion checks. Report implementation, final combined testing, device/source verification and deployment separately. Do not hold a completed original phase yellow solely for optional future extensions; retain those extensions visibly as outstanding. Do not expand release scope with new polish while a known closure item remains. Never turn an unmet requirement green by relabelling it.
+
+- Continue through the authorised workstreams without requesting review or a commit after each increment. The user wants one review when all work is green. Keep physical-device, deployment, missing-source and approval-dependent gates explicit; never mark them green just to satisfy that preference.
 
 - At the end of every task, report where the whole project stands against all tasks and requirements given so far, not just the work completed in the latest turn. Carry forward the original handover priorities and subsequent requests; do not silently drop unfinished work.
 - Include a concise cumulative checklist: `[x]` for completed items, `[ ] Partial` for partly implemented items, and `[ ]` for outstanding items. State exactly what remains within partial items. Group related requirements for readability, but do not mark an entire phase complete when only its foundations are implemented.

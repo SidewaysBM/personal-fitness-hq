@@ -2,33 +2,34 @@
 (function(root){
  'use strict';
  function analyse(data, today){
-  const days=Object.entries(data.logs).filter(([date])=>date<=today).sort(([a],[b])=>a.localeCompare(b));
-  const sessions=days.map(([date,log])=>({date,sets:log.sets.filter(s=>s.confirmed===true)})).filter(s=>s.sets.length);
+  const days=root.FormSession.entries(data).filter(([date])=>date<=today).sort(([a],[b])=>a.localeCompare(b));
+  const sessions=days.map(([date,log])=>({date,log,sets:log.sets.filter(s=>s.confirmed===true)})).filter(s=>s.sets.length);
   const last=sessions.at(-1), total=sessions.reduce((n,s)=>n+s.sets.length,0);
-  const volume=sessions.reduce((n,s)=>n+s.sets.reduce((sum,set)=>{const exercise=data.logs[s.date]?.plan?.exercises.find(e=>e.id===set.exerciseId)||data.exercises.find(e=>e.id===set.exerciseId);return sum+(exercise&&['strength','reps'].includes(exercise.kind)&&set.weight!==null?set.weight*set.reps:0)},0),0);
+  const volume=sessions.reduce((n,s)=>n+s.sets.reduce((sum,set)=>{const exercise=root.FormSession.exercise(s.log,set.exerciseId,data.exercises);return sum+(exercise&&['strength','reps'].includes(exercise.kind)&&set.weight!==null?set.weight*set.reps:0)},0),0);
   const cutoff=new Date(today+'T12:00:00Z');cutoff.setUTCDate(cutoff.getUTCDate()-6);
   const week=sessions.filter(s=>s.date>=cutoff.toISOString().slice(0,10)).length;
-  const reviews=[];
+  const reviews=[];for(const p of data.exercisePreferences||[])if(['avoid','review'].includes(p.state))reviews.push({id:'preference-'+p.exercise,title:(data.exercises.find(e=>e.id===p.exercise)?.name||p.exercise)+' · current preference',text:(root.FormPreferences?.labels[p.state]||p.state)+(p.note?': '+p.note:'.')+' Progression is paused. Saved prescriptions and actual recording remain available.'});
   if(!last)reviews.push({id:'first-session',title:'Start with a verified session',text:'Record your actual performance and confirm completed sets. Scheduled workouts and draft entries do not contribute to this review.'});
   else {
-   const drafts=data.logs[last.date].sets.filter(s=>!s.confirmed).length;
+   const drafts=last.log.sets.filter(s=>!s.confirmed).length;
    reviews.push({id:'session-'+last.date,title:'Latest session · '+last.date,text:last.sets.length+' confirmed sets'+(drafts?' and '+drafts+' unconfirmed drafts':'')+'. Only confirmed sets contribute to your results.'});
    const first=sessions[0].date,elapsed=Math.floor((Date.parse(today)-Date.parse(first))/86400000);
    if(elapsed>=28)reviews.push({id:'review-'+Math.floor(elapsed/28),title:'Program reassessment',text:'You have at least four weeks of recorded training. Review your goals, availability and confirmed performance before changing your plan. Changes to physiotherapy prescriptions need clinician guidance.'});
-   const byExercise=new Map();
-   for(const session of sessions)for(const set of session.sets){if(!byExercise.has(set.exerciseId))byExercise.set(set.exerciseId,[]);byExercise.get(set.exerciseId).push({...set,date:session.date,kind:(data.logs[session.date]?.plan?.exercises.find(e=>e.id===set.exerciseId)||data.exercises.find(e=>e.id===set.exerciseId))?.kind})}
-   for(const [id,sets] of byExercise){const exercise=data.exercises.find(e=>e.id===id);const dates=[...new Set(sets.map(s=>s.date))];if(!exercise||dates.length<2||exercise.kind==='seconds')continue;
-    const previous=sets.filter(s=>s.date===dates.at(-2)),current=sets.filter(s=>s.date===dates.at(-1));
-    const comparable=previous.every(s=>['strength','reps'].includes(s.kind))&&current.every(s=>['strength','reps'].includes(s.kind))&&previous.length===current.length&&previous.every(a=>current.some(b=>a.index===b.index&&a.weight===b.weight));
-    if(comparable&&current.every(a=>a.reps>=previous.find(b=>b.index===a.index).reps))reviews.push({id:'progress-'+id+'-'+dates.at(-1),title:exercise.name+' · progression review',text:'Across the last two recorded sessions, you matched or exceeded repetitions for the same confirmed sets and entered loads. Check technique, effort and any missing sets before considering a progression. This does not establish readiness or change your prescription.'});
-   }
+   for(const signal of root.FormTraining?.reviewSignals(data,today)||[])reviews.push({id:'progress-'+signal.exercise+'-'+signal.dates.at(-1),title:signal.name+' · progression review',text:'All targets were confirmed on '+signal.dates.join(' and ')+', with matching saved targets and known loads. Review these results in Progression reviews. This does not establish readiness or change your prescription.'});
   }
-  return {sessions:sessions.length,sets:total,volume,week,reviews};
+  const adjusted=days.filter(([,log])=>Object.keys(log.changes||{}).length).at(-1);
+  if(adjusted){const summary=root.FormSession.summary(adjusted[1]);reviews.push({id:'changes-'+adjusted[0],title:'Session changes · '+adjusted[0],text:summary.skipped+' movements with remaining sets skipped; '+summary.substituted+' substitutions. Prescriptions remain unchanged and only confirmed actual sets count.'})}
+  const unfinished=days.filter(([,log])=>log.sets.some(s=>s.confirmed!==true)).map(([date,log,id])=>({date,id,name:log.plan?.routine?.name||'Recorded session',drafts:log.sets.filter(s=>s.confirmed!==true).length}));
+  if(unfinished.length)reviews.push({id:'draft-review',title:'Unconfirmed entries to review',text:unfinished.reduce((n,s)=>n+s.drafts,0)+' draft sets across '+unfinished.length+' sessions. Review actual values and confirm only sets you completed. Drafts are excluded from progress.'});
+  return {sessions:sessions.length,sets:total,volume,week,reviews,unfinished};
  }
  function reply(question,data,today,guides={}){
   const q=question.toLowerCase(),report=analyse(data,today);
+  if(/preference|avoid|paused/.test(q))return (data.exercisePreferences||[]).length?data.exercisePreferences.map(p=>(data.exercises.find(e=>e.id===p.exercise)?.name||p.exercise)+': '+(root.FormPreferences?.labels[p.state]||p.state)+(p.note?' — '+p.note:'')).join('\n'):'No exercise preferences have been saved. Add your own choices in Settings.';
   if(/pain|injur|cervical|medical|diagnos/.test(q))return 'This local coach cannot assess symptoms or change clinical guidance. Follow your saved clinician instructions and discuss changes with your treating professional.';
-  if(/progress|review|week|history|recent/.test(q))return report.week+' verified sessions in the last 7 days. '+report.sets+' confirmed sets overall.\n\n'+report.reviews.map(r=>r.title+': '+r.text).join('\n\n');
+  if(/restriction|clinician|physio/.test(q))return data.restrictions?.trim()?'Your saved guidance:\n'+data.restrictions:'No exercise restrictions or clinician guidance have been saved in Settings. I will not infer them from your records.';
+  if(/draft|unconfirmed|unfinished/.test(q))return report.unfinished.length?report.unfinished.map(s=>s.date+' · '+s.name+': '+s.drafts+' draft sets').join('\n')+'\nReview these sessions; do not confirm entries unless the sets were completed.':'No unconfirmed set entries through today. This does not imply that every scheduled session was completed.';
+  if(/progress|review|week|history|recent/.test(q))return report.week+' sessions with confirmed sets in the last 7 days. '+report.sets+' confirmed sets overall.\n\n'+report.reviews.map(r=>r.title+': '+r.text).join('\n\n');
   const e=data.exercises.find(e=>q.includes(e.name.toLowerCase()));
   if(e){const guide=guides[e.sourceExerciseId||e.id];return e.name+'\n'+(e.instructions||guide?.steps?.join('\n')||'No reviewed instructions are available for this exercise.')+'\nOpen its movement guide for the exact variation and demonstration.';}
   if(/add|modif|generat|yoga|mobility|import|substitut/.test(q))return 'Use Exercises to add your own movement or import a reviewed workout. Choose a routine in Calendar to schedule it. I cannot generate or approve exercise substitutions; your prescriptions remain unchanged.';

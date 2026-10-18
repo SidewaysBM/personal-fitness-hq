@@ -10,10 +10,11 @@ const initialFrom=source=>vm.runInNewContext(source.slice(source.indexOf('const 
 assert.equal(initialFrom(html),initialFrom(oldHtml),'Saved-data schema and original prescriptions must remain unchanged');
 
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
-for(const file of ['assets/program.js','assets/program-editor.js','assets/health-import.js','assets/workout-import.js','assets/activities.js','assets/coaching.js','assets/data-store.js','assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
-const server = http.createServer((req,res)=>{
+for(const file of ['assets/vendor-sax.js','assets/vendor-fflate.js','assets/calendar.js','assets/calendar-ui.js','assets/exercise-preferences.js','assets/training-tools.js','assets/progression-rules.js','assets/period-plans.js','assets/period-ui.js','assets/training-ui.js','assets/offline.js','assets/session-changes.js','assets/program.js','assets/program-editor.js','assets/health-import.js','assets/health-history.js','assets/workout-ocr.js','assets/workout-import.js','assets/activities.js','assets/coaching.js','assets/data-store.js','assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
+const server = http.createServer((req,res)=>{if(req.url.endsWith('manifest.webmanifest')){res.setHeader('Content-Type','application/manifest+json');res.end(fs.readFileSync('manifest.webmanifest'));return}
  const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/personal-fitness-hq\//,'');
- if(relative.startsWith('assets/')&&/^assets\/[a-z-]+\.(js|css)$/.test(relative)&&fs.existsSync(relative)){
+ if(['assets/exercise-images/single-leg-squat-isometric-v1.png','assets/exercise-images/single-leg-squat-female-isometric-v1.png'].includes(relative)){res.setHeader('Content-Type','image/png');res.end(fs.readFileSync(relative));return}
+ if(relative.startsWith('assets/')&&/^assets\/(?:exercise-images\/)?[a-z0-9-]+\.(js|css|png)$/.test(relative)&&fs.existsSync(relative)){
   res.setHeader('Content-Type',relative.endsWith('.js')?'text/javascript':'text/css');res.end(fs.readFileSync(relative));
  }else if(relative===''||relative==='original'){res.setHeader('Content-Type','text/html');res.end(html)}
  else {res.statusCode=404;res.end('Not found')}
@@ -26,7 +27,7 @@ const server = http.createServer((req,res)=>{
   ['iphone-webkit',webkit,{},devices['iPhone 13']],
   ['small-iphone-webkit',webkit,{}, {...devices['iPhone SE'],viewport:{width:375,height:667}}]
  ]) {
- const browser=await engine.launch(launch);const context=await browser.newContext({...device,acceptDownloads:true});const page=await context.newPage();
+ const browser=await engine.launch(launch);const context=await browser.newContext({serviceWorkers: 'block',...device,acceptDownloads:true});const page=await context.newPage();
  // Stub external media for deterministic interaction tests; live playback has a separate check.
  await context.route('https://**/*',r=>{if(r.request().resourceType()==='document')return r.fulfill({contentType:'text/html',body:'<title>Embedded player fixture</title>'});});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!/^Button failed to load, iconName = (invalid|pip|airplay)-placard, layoutTraits = \[MacOSLayoutTraits Inline\], src = blob:/.test(m.text()))errors.push(m.text())});page.on('dialog',d=>d.accept());
@@ -52,8 +53,13 @@ const server = http.createServer((req,res)=>{
   const button=guideButtons.nth(i);const name=await button.getAttribute('aria-label');
   await button.click();const dialog=page.getByRole('dialog');await dialog.waitFor();
   assert.equal(await dialog.locator('.guide-steps li').count(),4,name);
-  assert.equal(await dialog.locator('svg g[transform]').count(),2,name);
+  // Count movement frames, not nested transforms used for hands and footwear.
+  assert.equal(await dialog.locator('svg > g[transform]').count(),2,name);
   arts.add(await dialog.locator('svg').innerHTML());
+  for(const image of await dialog.locator('svg image').all()){
+    const href=await image.getAttribute('href');
+    await page.evaluate(async src=>{const img=new Image();img.src=src;await img.decode();if(img.naturalWidth<1000)throw Error('Reference image too small')},href);
+  }
   const link=dialog.locator('[data-video-link]');assert.match(await link.getAttribute('href'),/^https:\/\//);
   assert.equal(await link.getAttribute('rel'),'noopener noreferrer');assert.equal(await dialog.locator('iframe,video').count(),0);
   assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth),`${name}: dialog overflow`);
@@ -150,6 +156,13 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  const benBytes=await page.evaluate(()=>localStorage.getItem('form-fitness-v02'));
  await page.getByLabel('Active profile').selectOption('Georgie');
  assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),null);
+ await page.getByRole('button',{name:'View guide: Barbell single-leg squat',exact:true}).click();
+ const female=page.getByRole('dialog').locator('svg image');assert.equal(await female.count(),2);
+ assert.match(await female.first().getAttribute('href'),/female-isometric/);
+ await page.evaluate(async()=>{const img=new Image();img.src=document.querySelector('[role=dialog] image').getAttribute('href');await img.decode()});
+ await page.screenshot({path:`test-results/${name}-georgie-art.png`});await page.keyboard.press('Escape');
+ assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),null);
+ assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-v02')),benBytes);
  await nav.getByRole('button',{name:'Workout'}).click();assert.match(await page.locator('#app').innerText(),/No workout scheduled/);
  await nav.getByRole('button',{name:'Exercises'}).click();await page.getByRole('button',{name:'+ Add exercise'}).click();
  await page.locator('#customName').fill('Evening mobility');await page.locator('#customCategory').selectOption('Mobility');
@@ -166,7 +179,8 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  await page.waitForFunction(()=>document.querySelector('input[type=file]').value==='');
  assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-georgie-v02')),georgieBytes);
  await page.getByLabel('Active profile').selectOption('Ben');assert.equal(await page.evaluate(()=>localStorage.getItem('form-fitness-v02')),benBytes);
- await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('heading',{name:'Your training review'}).waitFor();
+ assert.match(await page.locator('[data-guide=single-leg-squat] image').getAttribute('href'),/\/single-leg-squat-isometric-v1.png$/);
+ await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'All reports',exact:true}).click();await page.getByRole('heading',{name:'Your training review'}).waitFor();
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:`test-results/${name}-review.png`,fullPage:true});
  await page.getByRole('button',{name:'Record activity',exact:true}).click();
@@ -174,10 +188,10 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  await page.getByRole('button',{name:'Save activity',exact:true}).click();assert.match(await page.locator('#app').innerText(),/0 confirmed activities · 0 minutes/);
  await page.locator('[data-edit-activity]').click();await page.getByRole('dialog').locator('[name=confirmed]').check();await page.getByRole('button',{name:'Save activity',exact:true}).click();
  assert.match(await page.locator('#app').innerText(),/1 confirmed activities · 25 minutes/);
- await page.reload();await nav.getByRole('button',{name:'Progress'}).click();assert.match(await page.locator('#app').innerText(),/1 confirmed activities · 25 minutes/);
+ await page.reload();await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'All reports',exact:true}).click();assert.match(await page.locator('#app').innerText(),/1 confirmed activities · 25 minutes/);
  await page.locator('[data-edit-activity]').click();await page.getByRole('dialog').locator('[name=minutes]').fill('20');await page.getByRole('button',{name:'Save activity',exact:true}).click();
  assert.match(await page.locator('#app').innerText(),/0 confirmed activities · 0 minutes/);
- await page.getByLabel('Active profile').selectOption('Georgie');await nav.getByRole('button',{name:'Progress'}).click();assert.equal(await page.locator('[data-edit-activity]').count(),0);
+ await page.getByLabel('Active profile').selectOption('Georgie');await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'All reports',exact:true}).click();assert.equal(await page.locator('[data-edit-activity]').count(),0);
  await page.reload();assert.equal(await page.getByLabel('Active profile').inputValue(),'Georgie');await page.getByLabel('Active profile').selectOption('Ben');
  await nav.getByRole('button',{name:'Exercises'}).click();await page.getByRole('button',{name:'Import workout',exact:true}).click();
  const importer=page.getByRole('dialog');await importer.locator('[name=title]').fill('Reviewed test session');await importer.locator('[name=date]').fill('2026-10-23');
@@ -188,7 +202,7 @@ await page.locator('#wt-back-squat-0').fill('35');await page.locator('#check-bac
  assert.equal(await page.evaluate(()=>JSON.stringify(JSON.parse(localStorage.getItem('form-fitness-v02')).logs)),logsBeforeImport);
  await page.locator('[data-guide]').first().click();assert.match(await page.getByRole('dialog').innerText(),/Synthetic source instruction/);await page.keyboard.press('Escape');
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
- await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'Import Apple Health'}).click();
+ await nav.getByRole('button',{name:'Progress'}).click();await page.getByRole('button',{name:'All reports',exact:true}).click();await page.getByRole('button',{name:'Import Apple Health'}).click();
  const xml='<HealthData><Workout workoutActivityType="HKWorkoutActivityTypeWalking" sourceName="Synthetic Watch" startDate="2026-10-16 10:00:00 +1100" duration="30" durationUnit="min" totalDistance="2" totalDistanceUnit="km"/><Workout workoutActivityType="HKWorkoutActivityTypeWalking" startDate="bad" duration="1" durationUnit="min"/></HealthData>';
  await page.getByRole('dialog').locator('input[type=file]').setInputFiles({name:'export.xml',mimeType:'application/xml',buffer:Buffer.from(xml)});
  await page.getByRole('dialog').getByRole('status').filter({hasText:'1 new workouts'}).waitFor();

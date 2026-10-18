@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1017">
+  <title>Update FORM — Personal Fitness HQ</title>
+  <link rel="icon" href="assets/icon-192.png">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#0b1017;color:#edf4f7;font:16px/1.6 system-ui,sans-serif;padding:24px;min-height:100vh;display:grid;place-items:center}main{width:min(100%,560px);background:#151e28;border:1px solid #354552;border-radius:24px;padding:clamp(24px,5vw,40px)}.brand{font-size:24px;font-weight:850;letter-spacing:-1px}.brand span{color:#b6f47c}h1{font-size:clamp(28px,6vw,36px);line-height:1.15;letter-spacing:-1px}p{color:#b7c7d1}button{font:inherit;font-weight:750;border:0;border-radius:12px;padding:14px 20px;min-height:48px;background:#b6f47c;color:#142211;cursor:pointer;width:100%}button:disabled{opacity:.6;cursor:wait}a{color:#b6f47c}#updateStatus{min-height:52px;color:#edf4f7}small{display:block;color:#96aab8;margin-top:22px}
+  </style>
+  <script src="assets/app-update.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="brand">FORM<span>.</span></div>
+    <h1>Bring FORM up to date.</h1>
+    <p>Load the latest artwork and app improvements. Your saved workouts and profiles stay on this device. Other open FORM tabs keep their current screen.</p>
+    <p id="updateStatus" role="status" aria-live="polite">Checking for an update…</p>
+    <button id="applyUpdate" type="button" disabled>Checking…</button>
+    <p><a href="./">Return to FORM</a></p>
+    <small>No backup restoration or website-data clearing is needed. Finish any edits in older tabs before reopening them.</small>
+  </main>
+</body>
+</html>
