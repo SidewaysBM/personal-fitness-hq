@@ -1,6 +1,6 @@
 # FORM — path to a finished release
 
-Reviewed 18 October 2026 against the original 17 October development handover, current project instructions, implemented modules and the passing 0.19.0 test logs. This is a scope/evidence audit, not new application testing or deployment.
+Reconciled across the FORM development chats on 18 October 2026 against the original handover, current project instructions and passing 0.20.0 combined tests. This document is the cumulative status authority; historical handovers retain their original evidence but do not override this current release state.
 
 ## Definition of green
 
@@ -24,8 +24,8 @@ Green implementation means the stated local feature is implemented and its relev
 Work in this order; reopen a completed item only for a concrete regression or new requirement. Keep the original scope visible.
 
 1. **Exercise-source audit — Codex.** Identify the exact unresolved movement variants/instructions using available read-only sources and existing guide records. Resolve supported facts; produce one short missing-source list for anything that cannot be established. Never fabricate a prescription. Missing clinical detail blocks a claim of complete prescription fidelity; it need not be disguised as an application defect.
-2. **Artwork handoff — existing artwork workstream.** Finish its rollout and provide its checked file set. This workstream must not duplicate/edit the athlete work. Do not claim its latest edits passed earlier tests.
-3. **Final combined regression — Codex, after artwork is stable.** Run the full application, update/offline and artwork suites once against the combined candidate; inspect desktop/mobile results; fix failures and rerun affected checks. Verify no private exports, credentials or synced references are included. Record the exact candidate state and current Git status. This is the point for one consolidated review invitation.
+2. **Artwork handoff — complete.** All 16 compact guides and prompt/provenance sidecars are included in the tested 0.20.0 candidate. Missing personal source details and the absent image specification remain separate.
+3. **Final combined regression — complete for 0.20.0.** Full application/privacy, update/offline and artwork checks passed with desktop/mobile visual review. The recorded candidate fingerprint still matches after commit. Reopen only for application changes or a concrete regression.
 4. **One device/source review — Ben, only when the candidate is ready.** Verify iPhone startup, real-record visibility, ordinary recording/correction, profile selection, backup download and Home Screen offline reopening. Check a real Health export locally if Health compatibility is to be signed off. Gather any unresolved physio sources in the same review. Do not create invented completed sessions or clear website data. Browser emulation cannot sign off these checks.
 5. **Publish and verify — after final review.** Use the existing GitHub Desktop branch and reviewed manifest, merge/push, check Pages success, verify the deployed version and essential interactions. Keep deploy status separate until this is done. Reference sequential publishing steps in RELEASE-CHECKLIST.md.
 
@@ -57,7 +57,7 @@ No missing requirement is cancelled by this document. New feature ideas are reco
 
 ## Repeatable combined candidate check
 
-The release audit now has one command: `npm run test:release`. It records the current application/test files, runs application/update/artwork compatibility checks, then rejects any changed candidate. `npm run check:release` performs packaging and recognised private-path checks alone. The 0.19.0 candidate passed the combined run and unchanged-file check; results are recorded in `docs/development-2026-10-18-release-gate.md`. Passing this command does not sign off unfinished illustration conversions or physical/source/live checks.
+The release audit now has one command: `npm run test:release`. It records the current application/test files, runs application/update/artwork compatibility checks, then rejects any changed candidate. `npm run check:release` performs packaging and recognised private-path checks alone. The 0.20.0 candidate passed the combined run and unchanged-file check; current evidence is in `docs/RELEASE-0.20.0.md`. The older 0.19.0 record remains historical. Passing this command does not sign off physical/source/live checks.
 
 ## Security and artwork release candidate — 18 October 2026
 
@@ -71,4 +71,12 @@ The current work includes public-safe local instructions, private-context isolat
 
 Use SECURITY-HOSTING.md for backup, repository privacy and Cloudflare Access steps. No real profile backup, repository visibility change, history rewrite or live deployment was performed by these local checks. Generative coaching, broader autonomous programming, native Apple Health synchronisation and cross-device sync remain separate outstanding extensions above.
 
-All release changes remain uncommitted on `codex/session-changes`. Remote references fetched and final status checked: zero commits ahead/behind origin/codex/session-changes; one existing feature commit ahead of origin/main. The existing feature commit on this branch is already pushed to its remote branch but has not been merged to `main`. The combined checks passed; one consolidated review is ready via RELEASE-0.20.0.md; do not request an incremental publish from the parallel artwork chat.
+## Cross-chat reconciliation — 18 October 2026
+
+- Application release committed and pushed as `8c93ea7` on `codex/session-changes`; no application commit awaits push. Fetched `origin/main` is `0432534`, the merge of the earlier `c3b89c5` checkpoint. Branch divergence is one commit each; this is not itself evidence of a merge conflict.
+- Earlier 0.19 deployment succeeded (PR #1 / Pages run #12, corroborated by the live service worker returning `form-shell-0.19.0-art10`). Version 0.20 is not deployed. A successful deployment is not physical-device verification.
+- Two source workouts have already been imported into the second profile in the Codex in-app browser at http://127.0.0.1:8766/ (a different storage origin from port 8765), with a private resulting backup kept outside Git. Do not repeat that import. No automatic transfer to a phone occurred; preserve both source and destination histories before any transfer. One truncated preparation instruction, unspecified intervals between superset movements, and demonstrations for newly imported movements remain outstanding. Private source details belong outside tracked documentation.
+- Earlier in-app video playback was checked in Chrome. Recheck current live/physical-device playback separately; old playback evidence does not certify all future versions or newly imported movements.
+- The reported mobile Safari certificate/privacy warning has no confirmed resolution. Retain an explicit physical-device HTTPS check; do not bypass a warning or clear website data.
+- The original standalone v0.4 copy is superseded by this repository; do not upload it over the current app.
+- This chat owns the consolidated release handover. Other workstreams should use this document and RELEASE-0.20.0.md, avoid duplicate imports or separate publish requests, and check current Git state before instructions. This sync changes documentation only; no application deployment or workout-data restoration is required.

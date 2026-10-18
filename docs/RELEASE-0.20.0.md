@@ -1,10 +1,8 @@
 # FORM 0.20.0 — consolidated review and publishing
 
-Candidate: `codex/session-changes`, based on `c3b89c5`. This task has not committed, merged, pushed or deployed changes. The existing branch tip is already on origin/codex/session-changes and is one feature commit ahead of origin/main. No existing branch-tip commits await push. The privacy redaction is staged; the application, artwork and supporting files below remain uncommitted.
+Candidate: `codex/session-changes`, committed and pushed as `8c93ea7` ("Add encrypted profiles, privacy safeguards and optimised exercise guides"). No application changes remain uncommitted and no branch commits await push. `origin/main` is `0432534`, the merge of the prior 0.19 checkpoint; the branches each have one unique commit. Version 0.20 has not been merged or deployed. The live service worker checked on 18 October still identifies 0.19.0.
 
-Ready-to-copy GitHub Desktop Summary:
-
-`Add encrypted profiles, privacy safeguards and optimised exercise guides`
+The file list below is the historical release manifest, not an instruction to recommit these files. Current cross-chat reconciliation is in RELEASE-CLOSURE.md.
 
 ## Scope
 
@@ -12,7 +10,7 @@ Optional per-profile PIN encryption and awaited durable saves, migration/recover
 
 The prescription/source changes already present on arrival were in assets/data-store.js, assets/program-editor.js, assets/training-ui.js, index.html, sw.js, package.json, package-lock.json, docs/exercise-art-casting.json, docs/development-2026-10-18-source-prescriptions.md and tests/unknown-rest-browser.cjs. They have been retained and tested as part of the combined candidate. Some now also contain security/artwork edits. No unrelated changes were identified for inclusion.
 
-One pre-staged public-safe instruction redaction also belongs to this review. It is deliberately omitted from the manual commit-file list as requested. Private local context is ignored and must never be added. No history rewrite is included.
+One public-safe instruction redaction is also included in the committed release. It is deliberately omitted from the manual commit-file list as requested. Private local context is ignored and must never be added. No history rewrite is included.
 
 ## Exact application/supporting file list
 
@@ -105,7 +103,7 @@ One pre-staged public-safe instruction redaction also belongs to this review. It
 
 Final combined `npm run test:release` passed for 0.20.0, including all application/privacy tests, three-engine update/offline tests and artwork checks. The candidate remained unchanged: `0d62496918fb9da1b46fdf7c0f2c9850cd43fbffa786e88bd52f438eedd056e9`. Log: ignored `test-results/release-0.20.0.log`. The static build also passed, producing 59 allowlisted files. Focused privacy tests already cover migration/cleanup failures without data loss, authenticated decryption, incorrect PIN and tampering, profile binding, encrypted persistence/recovery, failed writes, offline unlock, profile separation, background locking and CSP injection blocking. Desktop Chrome and iPhone 13/SE WebKit screenshots reviewed.
 
-Physical iPhone/Home Screen checks, actual Health exports, missing clinical sources and EXERCISE_IMAGE_SPEC.md, live hosting and account-level privacy remain separate gates. Real workout backups have not been taken by these tests. They use isolated synthetic browser data.
+Physical iPhone/Home Screen checks, actual Health exports, missing clinical sources and EXERCISE_IMAGE_SPEC.md, live hosting and account-level privacy remain separate gates. These tests use isolated synthetic browser data. A separate chat saved a private backup of the second profile after its local source-workout import; this does not confirm current backups of every device or profile.
 
 ## One user review, then publication
 
@@ -113,8 +111,8 @@ Physical iPhone/Home Screen checks, actual Health exports, missing clinical sour
 2. Contain existing exposure using GitHub repository Settings → General → Danger Zone → Change repository visibility → Private. See SECURITY-HOSTING.md for Pages consequences before confirming.
 3. Review the local candidate at http://127.0.0.1:8765/update.html → update in a new tab. Check Version 0.20.0 in Settings, Privacy & backups, the exercise guides and ordinary recording/restore using test data. Localhost has separate storage from the live app; do not mistake an empty local profile for lost live records.
 4. Provide the missing exercise specification/source material and full intended Access email addresses. A custom domain is optional. Physical iPhone review and a real Health-export check remain required for those release gates.
-5. After the consolidated review, GitHub Desktop → personal-fitness-hq → Current branch: codex/session-changes. Review the files above and the staged privacy redaction, use the Summary above, Commit to codex/session-changes, then Push origin. Do not add ignored private material or dist.
-6. When ready to release, GitHub Desktop → Current branch → main → Branch → Merge into current branch → codex/session-changes → merge → Push origin. Do not switch branches with unresolved uncommitted changes.
+5. The application commit and push are already complete. Do not repeat them. Any later documentation-only sync is separate; check current Git status and include only those changed documents in its commit. Keep ignored private material and dist excluded.
+6. After the device/privacy review and hosting decision, check current Git state and fetch the latest remote. Merge the reviewed codex/session-changes release into main using the existing GitHub pull-request workflow, inspect its comparison and checks, and confirm deployment. The earlier PR #1 merged 0.19 only. Do not merge or publish again as part of this documentation sync.
 7. Configure Cloudflare Pages and Access using SECURITY-HOSTING.md, deploy only dist, and verify all hostname access gates before restoring real backups to the new URL. Confirm Version 0.20.0, navigation, recording/correction, both profiles, backup/restore and Home Screen offline reopening. Never mark deployment complete solely because a build succeeded.
 8. If retaining GitHub Pages instead, confirm an eligible private-repository Pages plan first. After deployment succeeds, visit https://sidewaysbm.github.io/personal-fitness-hq/update.html and check the same version and interactions. A private repository does not itself make the Pages site login-protected.
 
