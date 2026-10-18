@@ -5,7 +5,7 @@
   const days=Object.entries(data.logs).filter(([date])=>date<=today).sort(([a],[b])=>a.localeCompare(b));
   const sessions=days.map(([date,log])=>({date,sets:log.sets.filter(s=>s.confirmed===true)})).filter(s=>s.sets.length);
   const last=sessions.at(-1), total=sessions.reduce((n,s)=>n+s.sets.length,0);
-  const volume=sessions.reduce((n,s)=>n+s.sets.reduce((sum,set)=>{const exercise=data.exercises.find(e=>e.id===set.exerciseId);return sum+(exercise&&exercise.kind!=='seconds'&&set.weight!==null?set.weight*set.reps:0)},0),0);
+  const volume=sessions.reduce((n,s)=>n+s.sets.reduce((sum,set)=>{const exercise=data.logs[s.date]?.plan?.exercises.find(e=>e.id===set.exerciseId)||data.exercises.find(e=>e.id===set.exerciseId);return sum+(exercise&&['strength','reps'].includes(exercise.kind)&&set.weight!==null?set.weight*set.reps:0)},0),0);
   const cutoff=new Date(today+'T12:00:00Z');cutoff.setUTCDate(cutoff.getUTCDate()-6);
   const week=sessions.filter(s=>s.date>=cutoff.toISOString().slice(0,10)).length;
   const reviews=[];
@@ -16,10 +16,10 @@
    const first=sessions[0].date,elapsed=Math.floor((Date.parse(today)-Date.parse(first))/86400000);
    if(elapsed>=28)reviews.push({id:'review-'+Math.floor(elapsed/28),title:'Program reassessment',text:'You have at least four weeks of recorded training. Review your goals, availability and confirmed performance before changing your plan. Changes to physiotherapy prescriptions need clinician guidance.'});
    const byExercise=new Map();
-   for(const session of sessions)for(const set of session.sets){if(!byExercise.has(set.exerciseId))byExercise.set(set.exerciseId,[]);byExercise.get(set.exerciseId).push({...set,date:session.date})}
+   for(const session of sessions)for(const set of session.sets){if(!byExercise.has(set.exerciseId))byExercise.set(set.exerciseId,[]);byExercise.get(set.exerciseId).push({...set,date:session.date,kind:(data.logs[session.date]?.plan?.exercises.find(e=>e.id===set.exerciseId)||data.exercises.find(e=>e.id===set.exerciseId))?.kind})}
    for(const [id,sets] of byExercise){const exercise=data.exercises.find(e=>e.id===id);const dates=[...new Set(sets.map(s=>s.date))];if(!exercise||dates.length<2||exercise.kind==='seconds')continue;
     const previous=sets.filter(s=>s.date===dates.at(-2)),current=sets.filter(s=>s.date===dates.at(-1));
-    const comparable=previous.length===current.length&&previous.every(a=>current.some(b=>a.index===b.index&&a.weight===b.weight));
+    const comparable=previous.every(s=>['strength','reps'].includes(s.kind))&&current.every(s=>['strength','reps'].includes(s.kind))&&previous.length===current.length&&previous.every(a=>current.some(b=>a.index===b.index&&a.weight===b.weight));
     if(comparable&&current.every(a=>a.reps>=previous.find(b=>b.index===a.index).reps))reviews.push({id:'progress-'+id+'-'+dates.at(-1),title:exercise.name+' · progression review',text:'Across the last two recorded sessions, you matched or exceeded repetitions for the same confirmed sets and entered loads. Check technique, effort and any missing sets before considering a progression. This does not establish readiness or change your prescription.'});
    }
   }

@@ -57,3 +57,14 @@ Use the profile selector to choose Ben or Georgie. Ben's original `form-fitness-
 Draft set edits now persist without being counted. A blank repetitions field cannot be confirmed. Corrupt/unsupported saved data opens recovery mode instead of being silently replaced. Failed writes roll back displayed state; conflicting edits from another tab are rejected until reload. New optional fields are added only when their features are used. Existing version-2 data is not rewritten merely by opening the app.
 
 See [development verification and publishing](docs/development-2026-10-17.md) and [Apple Health integration pathway](docs/apple-health.md). Cold offline launch, automatic screenshot extraction, generative AI, full program editing, approval-based progression changes and native HealthKit integration remain future work.
+
+## Version 0.6 — prescriptions and weekly schedules
+
+- **Exercises → Your workout programs → Edit prescriptions:** choose included movements and edit each routine's sets, repetitions/seconds, per-set loads, rest and instructions. The shared exercise library is unchanged. Blank loads remain unknown.
+- **Calendar → Edit weekly schedule:** assign a routine or rest day for each weekday, starting today or a future date. Ben and Georgie have independent schedules. Explicit choices for a single date still take priority. Multiple dated revisions are supported.
+- A session's prescription is captured when its first actual entry is saved. Later program/schedule changes cannot rewrite it. Historical actuals remain editable and require reconfirmation after correction.
+- Older sessions did not store their original prescription. Before a program change, their current reference is preserved with a **Legacy session** label. This is not a reconstruction of the historical prescription. Recorded values, confirmation flags, timestamps and unknown metadata are retained.
+- Recorded dates cannot be reassigned to another routine; choose another date. Skipped exercises, substitutions and additional sessions on the same day remain future work.
+- The dashboard and calendar now open on the current local date/month. Progress volume and comparison use saved session units where available; timed or unknown-unit movements are excluded from repetition-based load volume.
+
+See [0.6 verification and publishing instructions](docs/development-2026-10-18.md).

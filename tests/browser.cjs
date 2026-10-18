@@ -10,7 +10,7 @@ const initialFrom=source=>vm.runInNewContext(source.slice(source.indexOf('const 
 assert.equal(initialFrom(html),initialFrom(oldHtml),'Saved-data schema and original prescriptions must remain unchanged');
 
 new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
-for(const file of ['assets/health-import.js','assets/workout-import.js','assets/activities.js','assets/coaching.js','assets/data-store.js','assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
+for(const file of ['assets/program.js','assets/program-editor.js','assets/health-import.js','assets/workout-import.js','assets/activities.js','assets/coaching.js','assets/data-store.js','assets/exercise-guides.js','assets/exercise-art.js','assets/exercise-videos.js'])new vm.Script(fs.readFileSync(file,'utf8'));
 const server = http.createServer((req,res)=>{
  const relative=new URL(req.url,'http://localhost').pathname.replace(/^\/personal-fitness-hq\//,'');
  if(relative.startsWith('assets/')&&/^assets\/[a-z-]+\.(js|css)$/.test(relative)&&fs.existsSync(relative)){

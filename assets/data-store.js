@@ -10,23 +10,43 @@
     require(object(v) && v.version === 2, 'expected version 2');
     require(object(v.profile) && ['age', 'height', 'weight'].every(k => number(v.profile[k])), 'profile');
     require(Array.isArray(v.exercises) && v.exercises.length > 0, 'exercises');
-    const ids = new Set();
-    for (const e of v.exercises) {
-      require(object(e) && id(e.id) && !ids.has(e.id), 'unique exercise ID'); ids.add(e.id);
-      require(typeof e.name === 'string' && typeof e.group === 'string' && typeof e.kind === 'string', 'exercise details');
+    function prescription(e) {
       require(Number.isInteger(e.sets) && e.sets >= 0 && e.sets <= 100 && number(e.reps) && number(e.rest), 'exercise prescription');
-      require(Array.isArray(e.weights) && e.weights.every(w => w === null || w === '' || number(w)), 'prescribed weights');
+      require(typeof e.kind === 'string' && Array.isArray(e.weights) && e.weights.every(w => w === null || w === '' || number(w)), 'prescribed weights');
     }
+    function exercises(items) {
+      require(Array.isArray(items), 'exercise list'); const ids = new Set();
+      for (const e of items) {
+        require(object(e) && id(e.id) && !ids.has(e.id), 'unique exercise ID'); ids.add(e.id);
+        require(typeof e.name === 'string' && typeof e.group === 'string', 'exercise details'); prescription(e);
+      }
+      return ids;
+    }
+    const ids = exercises(v.exercises);
     require(Array.isArray(v.routines) && v.routines.length >= 3, 'three scheduling routines');
     const routines = new Set();
     for (const r of v.routines) {
       require(object(r) && id(r.id) && !routines.has(r.id), 'unique routine ID'); routines.add(r.id);
       require(typeof r.name === 'string' && typeof r.note === 'string' && Array.isArray(r.ids) && r.ids.every(i => ids.has(i)), 'routine');
+      if(r.prescriptions !== undefined){require(object(r.prescriptions), 'routine prescriptions');for(const [eid,p] of Object.entries(r.prescriptions)){require(r.ids.includes(eid) && object(p) && Object.keys(p).every(k=>['sets','reps','rest','weights','kind'].includes(k)), 'prescription movement');prescription(p)}}
     }
     require(object(v.overrides) && Object.entries(v.overrides).every(([d, r]) => date(d) && (r === null || routines.has(r))), 'schedule overrides');
+    if(v.scheduleChanges !== undefined){
+      require(Array.isArray(v.scheduleChanges), 'schedule revisions');const dates=new Set();
+      for(const revision of v.scheduleChanges){
+        require(object(revision) && date(revision.from) && !dates.has(revision.from), 'schedule effective date');dates.add(revision.from);
+        require(object(revision.days) && Object.keys(revision.days).length===7 && [0,1,2,3,4,5,6].every(d=>Object.hasOwn(revision.days,d)&&(revision.days[d]===null||routines.has(revision.days[d]))), 'weekly schedule');
+      }
+    }
     require(object(v.logs), 'workout logs');
     for (const [d, log] of Object.entries(v.logs)) {
       require(date(d) && object(log) && log.date === d && Array.isArray(log.sets), 'workout date and sets');
+      if(log.plan !== undefined){
+        const p=log.plan;require(object(p) && ['recorded','legacy-reference'].includes(p.provenance) && object(p.routine), 'session snapshot');
+        const snapshotIds=exercises(p.exercises),r=p.routine;
+        require(id(r.id) && typeof r.name==='string' && typeof r.note==='string' && Array.isArray(r.ids) && r.ids.length===snapshotIds.size && new Set(r.ids).size===r.ids.length && r.ids.every(i=>snapshotIds.has(i)), 'snapshot routine');
+        require(log.sets.every(s=>snapshotIds.has(s.exerciseId)), 'record missing from snapshot');
+      }
       const seen = new Set();
       for (const s of log.sets) {
         require(object(s) && id(s.exerciseId) && Number.isInteger(s.index) && s.index >= 0, 'recorded set identity');
