@@ -1,0 +1,31 @@
+{
+  "exercise": "pushup",
+  "asset": "pushup-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "74138f060d75be227133da8ee03b495f789f4a8f59a46af46c3f31359fbfa707",
+    "generation": "exec-ce2a6e25-96b3-4ff3-b8ea-2c9563ab7ce4"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: PUSH-UP. Left frame high plank with two palms flat slightly wider than shoulders, elbows extended, toes on floor, head trunk hips ankles aligned. Right frame lower chest near floor by bending elbows backwards 30-45 degrees from torso; whole body lowers together with no sagging hips, toes and palms stay planted. Face towards floor neutral neck, five fingers natural, no kneeling. Model: South Asian female, age 40s, medium height and average build, fictional mass 79kg. Outfit: sage sleeveless top and graphite training bottoms, trainers. Generous margins, no clipped hands or feet. Distinct ordinary face, age appropriate hair, no fitness model styling.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: PUSH-UP. Left frame high plank with two palms flat slightly wider than shoulders, elbows extended, toes on floor, head trunk hips ankles aligned. Right frame lower chest near floor by bending elbows backwards 30-45 degrees from torso; whole body lowers together with no sagging hips, toes and palms stay planted. Face towards floor neutral neck, five fingers natural, no kneeling. Model: South Asian female, age 40s, medium height and average build, fictional mass 79kg. Outfit: sage sleeveless top and graphite training bottoms, trainers. Generous margins, no clipped hands or feet. Distinct ordinary face, age appropriate hair, no fitness model styling.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 64372,
+    "pixelDimensionsUnchanged": true
+  }
+}

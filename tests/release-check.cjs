@@ -1,5 +1,5 @@
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),cp=require('node:child_process'),assert=require('node:assert/strict');
-const {inspect,compare,checkPrivatePaths}=require('../scripts/release-check.cjs');
+const {inspect,compare,checkPrivatePaths,checkPrivateContent}=require('../scripts/release-check.cjs');
 const root=path.resolve(__dirname,'..'),initial=inspect(root);assert(checkPrivatePaths(root)>0);
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'form-release-fixture-'));
 try{
@@ -9,6 +9,13 @@ try{
  assert(checkPrivatePaths(temp)>0); // Ignored exports are not release candidates.
  cp.execFileSync('git',['-C',temp,'add','-f','export.xml']);assert.throws(()=>checkPrivatePaths(temp),/Private\/export paths/);
  cp.execFileSync('git',['-C',temp,'rm','--cached','export.xml']);
+ const privateText=['Male, ',String(30+8),' years old'].join('');
+ const leaked=path.join(temp,'notes.md');fs.writeFileSync(leaked,privateText);
+ assert.throws(()=>checkPrivateContent(temp),/Personal profile content/);
+ cp.execFileSync('git',['-C',temp,'add','notes.md']);fs.writeFileSync(leaked,'Public-safe instructions.');
+ assert.throws(()=>checkPrivateContent(temp),/staged/);
+ cp.execFileSync('git',['-C',temp,'add','notes.md']);checkPrivateContent(temp);
+
  const target=path.join(temp,'assets/exercise-preferences.js');fs.appendFileSync(target,'\n// synthetic concurrent change\n');
  assert.deepEqual(compare(baseline,inspect(temp)),['assets/exercise-preferences.js']);fs.copyFileSync(path.join(root,'assets/exercise-preferences.js'),target);
  fs.unlinkSync(target);assert.throws(()=>inspect(temp),/Missing.*exercise-preferences/);fs.copyFileSync(path.join(root,'assets/exercise-preferences.js'),target);

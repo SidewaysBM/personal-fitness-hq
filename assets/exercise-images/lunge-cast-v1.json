@@ -1,0 +1,31 @@
+{
+  "exercise": "lunge",
+  "asset": "lunge-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "834342af3ffbe87cbdb0c47e863568eadf0f2d8ef6200af17c8e8704052e5d54",
+    "generation": "exec-32bac84b-64fe-449c-b595-ac166c4b6cf1"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BODYWEIGHT REVERSE LUNGE. Left frame split stance after stepping one foot backwards, front foot flat, rear heel lifted and rear toes on floor, torso upright. Right frame lower hips, front knee bent approximately right angle, rear knee close to floor, front heel stays grounded rear heel raised, arms relaxed beside body. No bench, no weights. Model: Latino male, age 50s, tall slender frame, ordinary muscle bulk, fictional mass 63kg. Outfit: plum tee and slate training bottoms, trainers. Generous margins, no clipped hands or feet. Distinct ordinary face, age appropriate hair, no fitness model styling.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: BODYWEIGHT REVERSE LUNGE. Left frame split stance after stepping one foot backwards, front foot flat, rear heel lifted and rear toes on floor, torso upright. Right frame lower hips, front knee bent approximately right angle, rear knee close to floor, front heel stays grounded rear heel raised, arms relaxed beside body. No bench, no weights. Model: Latino male, age 50s, tall slender frame, ordinary muscle bulk, fictional mass 63kg. Outfit: plum tee and slate training bottoms, trainers. Generous margins, no clipped hands or feet. Distinct ordinary face, age appropriate hair, no fitness model styling.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 54288,
+    "pixelDimensionsUnchanged": true
+  }
+}

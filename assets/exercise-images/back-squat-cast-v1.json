@@ -1,0 +1,31 @@
+{
+  "exercise": "back-squat",
+  "asset": "back-squat-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "d6208ea39889f95db028e5690cb5933cdda70e55b9516b07fdcd63d7cffc807a",
+    "generation": "exec-27bdf09a-a74e-4416-a175-44a225d7c6a9"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Barbell BACK SQUAT. Left frame standing upright feet shoulder-width, barbell across upper back below neck. Right frame bottom squat with hips back/down, knees bent tracking toes, whole feet planted and bar over midfoot. Same bar and stance both frames. Model: South Asian male, age 30s, tall slender frame, ordinary muscle bulk, fictional design mass 66kg. Outfit: teal tee and grey shorts, ordinary trainers, secure any long hair. Respect this model, use realistic facial variation.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Barbell BACK SQUAT. Left frame standing upright feet shoulder-width, barbell across upper back below neck. Right frame bottom squat with hips back/down, knees bent tracking toes, whole feet planted and bar over midfoot. Same bar and stance both frames. Model: South Asian male, age 30s, tall slender frame, ordinary muscle bulk, fictional design mass 66kg. Outfit: teal tee and grey shorts, ordinary trainers, secure any long hair. Respect this model, use realistic facial variation.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 67550,
+    "pixelDimensionsUnchanged": true
+  }
+}

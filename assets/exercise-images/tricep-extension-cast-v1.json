@@ -1,0 +1,31 @@
+{
+  "exercise": "tricep-extension",
+  "asset": "tricep-extension-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "163417207746fac32c0069945c958d5af8a871f7d5433de69bbc338c0d0bcb5f",
+    "generation": "exec-4a0b8f06-e862-4d18-8403-ea1691aa82aa"
+  },
+  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Standing two-handed OVERHEAD DUMBBELL TRICEPS EXTENSION with ONE dumbbell held by both hands. Left frame upper arms upright beside head, elbows bent so dumbbell hangs behind head, hands securely supporting inner top dumbbell head. Right frame elbows extended, same dumbbell held above head with both hands together. Feet planted, neutral spine, upper arms stay vertical, no impossible wrists. Model: Black male, age 50s, compact stocky frame, soft waist, fictional mass 103kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Standing two-handed OVERHEAD DUMBBELL TRICEPS EXTENSION with ONE dumbbell held by both hands. Left frame upper arms upright beside head, elbows bent so dumbbell hangs behind head, hands securely supporting inner top dumbbell head. Right frame elbows extended, same dumbbell held above head with both hands together. Feet planted, neutral spine, upper arms stay vertical, no impossible wrists. Model: Black male, age 50s, compact stocky frame, soft waist, fictional mass 103kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+    "correction": null
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 48384,
+    "pixelDimensionsUnchanged": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "exercise": "neutral-push",
+  "asset": "neutral-push-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "110c290b16f6c437d6d61331c7036556b7dc2548af7e476dc49968c6c4053f5f",
+    "generation": "exec-14fca364-5375-4619-b079-375fc87b79aa"
+  },
+  "generationPrompt": "Correct both panels to NEUTRAL GRIP dumbbell push press. Rotate BOTH dumbbells and BOTH hands 90 degrees so PALMS FACE EACH OTHER, dumbbell handles run FRONT TO BACK, elbows face forward. End hexagonal weight faces toward camera, other end behind hand. Left shallow knee dip with dumbbells at shoulders, right standing overhead with palms still inward. Keep same South Asian average-build man, blue tee charcoal shorts, two equal panels dark teal background, same framing and anatomy. Leave margin above equipment. No text.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: NEUTRAL-GRIP DUMBBELL PUSH PRESS. Left frame SHALLOW knee dip, upright torso, one dumbbell at each shoulder, palms facing each other. Right frame knees/hips extended, both dumbbells pressed overhead with arms extended and palms still facing inward. No deep squat, no second knee dip. Model: South Asian male, age 30s, tall broad frame, modest muscle definition, fictional mass 89kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave 10% margin above overhead hands and weights and around body. Ordinary distinctive face and natural skin. Ensure only two arms and two legs per person.",
+    "correction": null,
+    "finalCorrection": {
+      "correction": "Correct both panels to NEUTRAL GRIP dumbbell push press. Rotate BOTH dumbbells and BOTH hands 90 degrees so PALMS FACE EACH OTHER, dumbbell handles run FRONT TO BACK, elbows face forward. End hexagonal weight faces toward camera, other end behind hand. Left shallow knee dip with dumbbells at shoulders, right standing overhead with palms still inward. Keep same South Asian average-build man, blue tee charcoal shorts, two equal panels dark teal background, same framing and anatomy. Leave margin above equipment. No text.",
+      "source": "/Users/benjaminmikus/.codex/generated_images/01a147e3-f4da-7e71-8857-68bde92cd0ba/exec-14fca364-5375-4619-b079-375fc87b79aa.png"
+    }
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 51026,
+    "pixelDimensionsUnchanged": true
+  }
+}

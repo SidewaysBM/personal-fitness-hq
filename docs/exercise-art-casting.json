@@ -1,261 +1,165 @@
 {
-  "purpose": "Fictional artwork casting only; not user ethnicity or workout data. Randomised once, fixed thereafter.",
+  "purpose": "One fictional model per exercise, shared across profiles. Randomised once; no ethnicity/body or age/ability rule. Weights are creative design estimates, not measured from artwork or shown in app.",
   "assignments": {
     "back-squat": {
-      "male": {
-        "castingBrief": "South Asian",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "30s"
-      },
-      "female": {
-        "castingBrief": "Middle Eastern",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "50s"
-      }
+      "castingBrief": "South Asian",
+      "outfitBrief": "teal tee and grey shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall slender frame, ordinary muscle bulk",
+      "ageBrief": "30s",
+      "gender": "male",
+      "fictionalWeightKg": 66,
+      "asset": "back-squat-cast-v1.webp"
     },
     "push-press": {
-      "male": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "40s"
-      },
-      "female": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "30s"
-      }
+      "castingBrief": "East Asian",
+      "outfitBrief": "teal tee and grey shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall slender frame, ordinary muscle bulk",
+      "ageBrief": "30s",
+      "gender": "female",
+      "fictionalWeightKg": 57,
+      "asset": "push-press-cast-v1.webp"
     },
     "box-jumps": {
-      "male": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "muted coral tee and navy training bottoms",
-        "status": "planned",
-        "bodyBrief": "broad frame, fuller midsection",
-        "ageBrief": "30s"
-      },
-      "female": {
-        "castingBrief": "Black",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "broad frame, fuller midsection",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "Black",
+      "outfitBrief": "teal tee and grey shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "broad frame, fuller midsection",
+      "ageBrief": "40s",
+      "gender": "female",
+      "fictionalWeightKg": 89,
+      "asset": "box-jumps-cast-v1.webp"
     },
     "tricep-extension": {
-      "male": {
-        "castingBrief": "Black",
-        "outfitBrief": "slate blue tee and charcoal shorts",
-        "status": "planned",
-        "bodyBrief": "compact stocky frame, soft waist",
-        "ageBrief": "50s"
-      },
-      "female": {
-        "castingBrief": "white",
-        "outfitBrief": "slate blue tee and charcoal shorts",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "Black",
+      "outfitBrief": "slate blue tee and charcoal shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "compact stocky frame, soft waist",
+      "ageBrief": "50s",
+      "gender": "male",
+      "fictionalWeightKg": 103,
+      "asset": "tricep-extension-cast-v1.webp"
     },
     "leg-raise": {
-      "male": {
-        "castingBrief": "Black",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "compact stocky frame, soft waist",
-        "ageBrief": "60s"
-      },
-      "female": {
-        "castingBrief": "white",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "compact stocky frame, soft waist",
-        "ageBrief": "30s"
-      }
+      "castingBrief": "white",
+      "outfitBrief": "sage sleeveless top and graphite training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "compact stocky frame, soft waist",
+      "ageBrief": "30s",
+      "gender": "female",
+      "fictionalWeightKg": 96,
+      "asset": "leg-raise-cast-v1.webp"
     },
     "bench": {
-      "male": {
-        "castingBrief": "Southeast Asian",
-        "outfitBrief": "slate blue tee and charcoal shorts",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "40s"
-      },
-      "female": {
-        "castingBrief": "white",
-        "outfitBrief": "muted rust tee and navy shorts",
-        "status": "planned",
-        "bodyBrief": "shorter slim frame, soft definition",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "white",
+      "outfitBrief": "muted rust tee and navy shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "shorter slim frame, soft definition",
+      "ageBrief": "40s",
+      "gender": "female",
+      "fictionalWeightKg": 67,
+      "asset": "bench-cast-v1.webp"
     },
     "ring-row": {
-      "male": {
-        "castingBrief": "Southeast Asian",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "50s"
-      },
-      "female": {
-        "castingBrief": "Latino",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "50s"
-      }
+      "castingBrief": "Latino",
+      "outfitBrief": "plum tee and slate training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "medium height and average build",
+      "ageBrief": "50s",
+      "gender": "female",
+      "fictionalWeightKg": 77,
+      "asset": "ring-row-cast-v1.webp"
     },
     "sit-up": {
-      "male": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "muted coral tee and navy training bottoms",
-        "status": "planned",
-        "bodyBrief": "shorter slim frame, soft definition",
-        "ageBrief": "30s"
-      },
-      "female": {
-        "castingBrief": "Black",
-        "outfitBrief": "muted rust tee and navy shorts",
-        "status": "planned",
-        "bodyBrief": "broad frame, fuller midsection",
-        "ageBrief": "60s"
-      }
+      "castingBrief": "East Asian",
+      "outfitBrief": "muted coral tee and navy training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "shorter slim frame, soft definition",
+      "ageBrief": "30s",
+      "gender": "male",
+      "fictionalWeightKg": 69,
+      "asset": "sit-up-cast-v1.webp"
     },
     "side-plank": {
-      "male": {
-        "castingBrief": "Middle Eastern",
-        "outfitBrief": "muted rust tee and navy shorts",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "30s"
-      },
-      "female": {
-        "castingBrief": "Southeast Asian",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "shorter slim frame, soft definition",
-        "ageBrief": "60s"
-      }
+      "castingBrief": "Southeast Asian",
+      "outfitBrief": "plum tee and slate training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "shorter slim frame, soft definition",
+      "ageBrief": "60s",
+      "gender": "female",
+      "fictionalWeightKg": 56,
+      "asset": "side-plank-cast-v1.webp"
     },
     "deadbug": {
-      "male": {
-        "castingBrief": "white",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "40s"
-      },
-      "female": {
-        "castingBrief": "Middle Eastern",
-        "outfitBrief": "muted rust tee and navy shorts",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "white",
+      "outfitBrief": "teal tee and grey shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall slender frame, ordinary muscle bulk",
+      "ageBrief": "40s",
+      "gender": "male",
+      "fictionalWeightKg": 61,
+      "asset": "deadbug-cast-v1.webp"
     },
     "thruster": {
-      "male": {
-        "castingBrief": "Latino",
-        "outfitBrief": "muted coral tee and navy training bottoms",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "60s"
-      },
-      "female": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "30s"
-      }
+      "castingBrief": "Latino",
+      "outfitBrief": "muted coral tee and navy training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "medium height and average build",
+      "ageBrief": "60s",
+      "gender": "male",
+      "fictionalWeightKg": 82,
+      "asset": "thruster-cast-v1.webp"
     },
     "neutral-push": {
-      "male": {
-        "castingBrief": "South Asian",
-        "outfitBrief": "slate blue tee and charcoal shorts",
-        "status": "planned",
-        "bodyBrief": "tall broad frame, modest muscle definition",
-        "ageBrief": "30s"
-      },
-      "female": {
-        "castingBrief": "Southeast Asian",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "shorter slim frame, soft definition",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "South Asian",
+      "outfitBrief": "slate blue tee and charcoal shorts",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall broad frame, modest muscle definition",
+      "ageBrief": "30s",
+      "gender": "male",
+      "fictionalWeightKg": 89,
+      "asset": "neutral-push-cast-v1.webp"
     },
     "lunge": {
-      "male": {
-        "castingBrief": "Latino",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "50s"
-      },
-      "female": {
-        "castingBrief": "Southeast Asian",
-        "outfitBrief": "teal tee and grey shorts",
-        "status": "planned",
-        "bodyBrief": "broad frame, fuller midsection",
-        "ageBrief": "50s"
-      }
+      "castingBrief": "Latino",
+      "outfitBrief": "plum tee and slate training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall slender frame, ordinary muscle bulk",
+      "ageBrief": "50s",
+      "gender": "male",
+      "fictionalWeightKg": 63,
+      "asset": "lunge-cast-v1.webp"
     },
     "pushup": {
-      "male": {
-        "castingBrief": "Middle Eastern",
-        "outfitBrief": "muted rust tee and navy shorts",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "60s"
-      },
-      "female": {
-        "castingBrief": "South Asian",
-        "outfitBrief": "sage sleeveless top and graphite training bottoms",
-        "status": "planned",
-        "bodyBrief": "medium height and average build",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "South Asian",
+      "outfitBrief": "sage sleeveless top and graphite training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "medium height and average build",
+      "ageBrief": "40s",
+      "gender": "female",
+      "fictionalWeightKg": 79,
+      "asset": "pushup-cast-v1.webp"
     },
     "burpee": {
-      "male": {
-        "castingBrief": "Black",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "broad frame, fuller midsection",
-        "ageBrief": "40s"
-      },
-      "female": {
-        "castingBrief": "Latino",
-        "outfitBrief": "plum tee and slate training bottoms",
-        "status": "planned",
-        "bodyBrief": "tall slender frame, ordinary muscle bulk",
-        "ageBrief": "40s"
-      }
+      "castingBrief": "Latino",
+      "outfitBrief": "plum tee and slate training bottoms",
+      "status": "implemented; browser checked; physical-device and live review pending",
+      "bodyBrief": "tall slender frame, ordinary muscle bulk",
+      "ageBrief": "40s",
+      "gender": "female",
+      "fictionalWeightKg": 60,
+      "asset": "burpee-cast-v1.webp"
     },
     "single-leg-squat": {
-      "male": {
-        "castingBrief": "Black",
-        "outfitBrief": "muted blue tee, charcoal shorts, grey trainers",
-        "bodyBrief": "compact stocky frame, broader soft waist",
-        "ageBrief": "mid-50s",
-        "status": "implemented"
-      },
-      "female": {
-        "castingBrief": "East Asian",
-        "outfitBrief": "plum tee, graphite leggings, grey trainers",
-        "bodyBrief": "tall slender frame, softly defined limbs",
-        "ageBrief": "mid-40s",
-        "status": "implemented"
-      }
+      "gender": "male",
+      "castingBrief": "Black",
+      "ageBrief": "mid-50s",
+      "bodyBrief": "compact stocky frame, broader soft waist",
+      "outfitBrief": "muted blue tee, charcoal shorts, grey trainers",
+      "fictionalWeightKg": 98,
+      "asset": "single-leg-squat-isometric-v2.webp",
+      "status": "implemented; browser checked; physical-device and live review pending"
     }
   }
 }

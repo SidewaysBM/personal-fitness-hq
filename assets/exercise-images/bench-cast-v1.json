@@ -1,0 +1,32 @@
+{
+  "exercise": "bench",
+  "asset": "bench-cast-v1.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-18",
+    "masterSha256": "46d0a5f5b05ea3d24cc5c11cb47fa468fd0f12472cf23b5f6ba2f6c908c696fe",
+    "generation": "exec-21c48414-830c-49ae-8006-7026b564c6c2"
+  },
+  "generationPrompt": "Create a new anatomically plausible two-frame FLAT BARBELL BENCH PRESS reference, 2:1 landscape with two equal panels. Ordinary white woman in her 40s, short/slim frame, rust tee and navy shorts, soft natural musculature, brown hair tied back. Dark teal studio backdrop, realistic 3D fitness reference. Use a SIDE-DOMINANT three-quarter view from beside the bench, so the length of the body and the bar's position over the chest are unambiguous. Head at LEFT, feet at RIGHT in each panel. She lies flat on bench with entire back of head supported on pad, short NATURAL neck immediately adjacent to shoulders, gaze straight upward, head never raised or stretched behind shoulders. Bench pad visibly continues under skull. Both feet flat on ground. LEFT frame lower bar to middle chest/sternum, hands shoulder-width-plus, elbows below torso and forearms vertically above elbows; bar visibly over chest to RIGHT of head, NOT in front of face or throat. RIGHT frame both arms extend vertically with bar above same chest area. Full bar, full body and bench in each panel. Same camera/identity/scale. No text. Focus on supported head, normal neck and chest-aligned bar. No extreme arch.",
+  "promptHistory": {
+    "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: FLAT BARBELL BENCH PRESS. Athlete lies supine on flat bench head and trunk supported, both feet planted on floor. Left frame lower bar close to mid chest, elbows bent with wrists above elbows. Right frame press bar vertically above chest with extended arms. Same bench and full bar in both frames; bar axis across chest perpendicular to body. Correct hands around bar, neck resting on bench. Model: white female, age 40s, shorter slim frame, soft definition, fictional mass 67kg. Outfit: muted rust tee and navy shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+    "correction": "Keep the supported head and normal short neck EXACTLY as now, back of skull and shoulders resting on bench in both panels. Correct ONLY arm/bar positions. LEFT frame: move the bar and both hands downwards along her body towards her FEET to align directly over her mid/lower sternum (centre of chest), well away from head. Bring elbows nearer ribs and below bench top so forearms remain vertical under bar. Bar almost touches mid chest, NOT over forehead or throat. RIGHT frame press vertically above that same chest area, not above face. Same woman, identity, clothes, equipment, camera and two-panel layout. Anatomically natural wrists, hands and elbows. No stretched neck, no lifted head.",
+    "finalReview": "Final regenerated side-dominant view: head supported fully on pad in both phases, natural neck beside shoulders, bar over chest. Generated source exec-21c48414-830c-49ae-8006-7026b564c6c2.png. Earlier correction prompt is retained; final exact prompt not recovered in this record."
+  },
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "casting": "One fixed fictional model per exercise, independent of profile",
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 96620,
+    "pixelDimensionsUnchanged": true
+  }
+}
