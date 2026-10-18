@@ -153,3 +153,16 @@ Reference checks for front-foot loading and neutral head position: [Human Kineti
 6. State what was visually reviewed, what automated tests passed, and whether physical-device and live verification remain pending. Give exact commit files and a ready-to-copy Summary, following the project handover rules.
 
 No pose change may rewrite exercise IDs, stored workout records, prescriptions, historical snapshots or completion flags. Source files under `sources/` remain read-only.
+
+## Mechanics review additions — 18 October 2026
+
+Read `docs/exercise-mechanics-review-2026-10-18.md` before the next pose revision; it records remaining defects, not just accepted improvements.
+
+- Compare both frames as one movement: fixed camera, stable model proportions, identical equipment dimensions, unchanged grip and planted feet unless the movement requires a step. Rings and strap lengths must not change to accommodate the pose.
+- Trace bar axis across the body, not only the hands. Bench images must make cross-body orientation and supported head obvious; use another camera if foreshortening obscures the bar path.
+- Check neck together with trunk; a rotated face alone does not fix cervical alignment. Use estimated shoulder/hip/ankle centres to inspect trunk alignment rather than clothing edges or body shape.
+- Prefer visible knees or fitted clothing. Ensure hands clearly grip, support or remain free; avoid accidental thigh contact in an unsupported lunge.
+- For deadbugs, expose near/far limb origins so opposite-arm/opposite-leg pairing is readable. Keep head supported.
+- Aim for 8–10% margins around moving hands and loads and matching head scale within 5%. Measure before claiming those numerical gates passed. A successful prompt is not proof the image obeyed it.
+- Do not infer kilograms from plate diameter, or capacity from a model's appearance. Never alter a prescription to match artwork. Do not label unverified weights in a sidecar as prescribed.
+- Retain exact final edit prompts, reference generation identifiers and master hashes. Keep rejected candidates out of application assets. Report residual issues and missing source/specification separately from automated rendering tests.

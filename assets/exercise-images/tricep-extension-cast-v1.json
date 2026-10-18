@@ -4,10 +4,10 @@
   "provenance": {
     "tool": "image_gen",
     "date": "2026-10-18",
-    "masterSha256": "163417207746fac32c0069945c958d5af8a871f7d5433de69bbc338c0d0bcb5f",
-    "generation": "exec-4a0b8f06-e862-4d18-8403-ea1691aa82aa"
+    "masterSha256": "c58be729dd60cbe003afd92be0f223475e198224af08624fc501e4f195247f8a",
+    "generation": "exec-044a8c27-df5b-43af-bfd8-245ac0dad057"
   },
-  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Standing two-handed OVERHEAD DUMBBELL TRICEPS EXTENSION with ONE dumbbell held by both hands. Left frame upper arms upright beside head, elbows bent so dumbbell hangs behind head, hands securely supporting inner top dumbbell head. Right frame elbows extended, same dumbbell held above head with both hands together. Feet planted, neutral spine, upper arms stay vertical, no impossible wrists. Model: Black male, age 50s, compact stocky frame, soft waist, fictional mass 103kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
+  "generationPrompt": "Preserve LEFT panel pose and camera. Make RIGHT panel use exactly the SAME three-quarter SIDE view as LEFT: same foot positions, torso rotation, head size, face direction. Only the elbows extend, keeping upper arms raised beside head; both hands support the upper end of one vertical dumbbell. Lowered dumbbell stays behind head in left panel. No shoulder press. Zoom BOTH panels out equally so top dumbbell has 10 percent safe margin. Same man, clothing and equipment. Wide 2:1 image two equal square panels, no text.",
   "promptHistory": {
     "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Standing two-handed OVERHEAD DUMBBELL TRICEPS EXTENSION with ONE dumbbell held by both hands. Left frame upper arms upright beside head, elbows bent so dumbbell hangs behind head, hands securely supporting inner top dumbbell head. Right frame elbows extended, same dumbbell held above head with both hands together. Feet planted, neutral spine, upper arms stay vertical, no impossible wrists. Model: Black male, age 50s, compact stocky frame, soft waist, fictional mass 103kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin.",
     "correction": null
@@ -25,7 +25,23 @@
   "export": {
     "format": "WebP",
     "quality": 88,
-    "bytes": 48384,
+    "bytes": 42642,
     "pixelDimensionsUnchanged": true
+  },
+  "previousGenerations": [
+    {
+      "provenance": {
+        "tool": "image_gen",
+        "date": "2026-10-18",
+        "masterSha256": "163417207746fac32c0069945c958d5af8a871f7d5433de69bbc338c0d0bcb5f",
+        "generation": "exec-4a0b8f06-e862-4d18-8403-ea1691aa82aa"
+      },
+      "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: Standing two-handed OVERHEAD DUMBBELL TRICEPS EXTENSION with ONE dumbbell held by both hands. Left frame upper arms upright beside head, elbows bent so dumbbell hangs behind head, hands securely supporting inner top dumbbell head. Right frame elbows extended, same dumbbell held above head with both hands together. Feet planted, neutral spine, upper arms stay vertical, no impossible wrists. Model: Black male, age 50s, compact stocky frame, soft waist, fictional mass 103kg. Outfit: slate blue tee and charcoal shorts, trainers. Leave generous 8% margin around ALL equipment and person, including overhead weights. Show distinctive ordinary face, secured hair, natural skin."
+    }
+  ],
+  "mechanicsReview": {
+    "referenceGeneration": "exec-3886f8de-7cf9-4bd8-9684-28543c48b2f2.png",
+    "record": "docs/exercise-mechanics-review-2026-10-18.md",
+    "status": "Visual improvement; exact specification compliance and quantitative anatomy not certified"
   }
 }

@@ -4,10 +4,10 @@
   "provenance": {
     "tool": "image_gen",
     "date": "2026-10-18",
-    "masterSha256": "4f6a13236f8baaadba11941358bd2ee974cd05d4b3e8ae42f9e53340d87dfe9e",
-    "generation": "exec-3b2c47dd-c799-4dba-b3ff-dfab55b9cfc8"
+    "masterSha256": "868a206b21fdfb0205c295783869cb3fdd2b32d525529a59726ae50040e96021",
+    "generation": "exec-1f7627dd-1ba1-4613-b1de-3957fdc13eb8"
   },
-  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: SIDE PLANK ON ELBOW, straight stacked legs. Left frame setup lying on side with hips low, supporting elbow directly below shoulder and forearm flat on mat, free hand on hip. Right frame lift hips until head/torso/straight legs align, weight on same forearm and side of lower foot, legs still stacked, free hand hip. Clearly side-on body orientation seen three-quarter; NOT a front plank, no straight supporting arm. Model: Southeast Asian female, age 60s, shorter slim frame, soft definition, fictional mass 56kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
+  "generationPrompt": "Correct ONLY neck and head orientation in this two-panel side plank. In RIGHT panel keep hips lifted and leg alignment unchanged. Rotate head and neck as a unit towards the LEFT so cervical spine continues the diagonal trunk line: ear should sit left of shoulder along shoulder-to-hip axis, not vertically above shoulder. Eyes look forward horizontally out from chest, not looking up. Natural short relaxed neck. Same woman, clothes, camera, mat, stacked feet, elbow contact, body size and panel layout. LEFT setup also relaxed neck. No text.",
   "promptHistory": {
     "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: SIDE PLANK ON ELBOW, straight stacked legs. Left frame setup lying on side with hips low, supporting elbow directly below shoulder and forearm flat on mat, free hand on hip. Right frame lift hips until head/torso/straight legs align, weight on same forearm and side of lower foot, legs still stacked, free hand hip. Clearly side-on body orientation seen three-quarter; NOT a front plank, no straight supporting arm. Model: Southeast Asian female, age 60s, shorter slim frame, soft definition, fictional mass 56kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
     "correction": null
@@ -25,7 +25,23 @@
   "export": {
     "format": "WebP",
     "quality": 88,
-    "bytes": 51618,
+    "bytes": 61246,
     "pixelDimensionsUnchanged": true
+  },
+  "previousGenerations": [
+    {
+      "provenance": {
+        "tool": "image_gen",
+        "date": "2026-10-18",
+        "masterSha256": "4f6a13236f8baaadba11941358bd2ee974cd05d4b3e8ae42f9e53340d87dfe9e",
+        "generation": "exec-3b2c47dd-c799-4dba-b3ff-dfab55b9cfc8"
+      },
+      "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: SIDE PLANK ON ELBOW, straight stacked legs. Left frame setup lying on side with hips low, supporting elbow directly below shoulder and forearm flat on mat, free hand on hip. Right frame lift hips until head/torso/straight legs align, weight on same forearm and side of lower foot, legs still stacked, free hand hip. Clearly side-on body orientation seen three-quarter; NOT a front plank, no straight supporting arm. Model: Southeast Asian female, age 60s, shorter slim frame, soft definition, fictional mass 56kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair."
+    }
+  ],
+  "mechanicsReview": {
+    "referenceGeneration": "exec-1510bbab-06ff-40c8-809a-088eeb120f86.png",
+    "record": "docs/exercise-mechanics-review-2026-10-18.md",
+    "status": "Visual improvement; exact specification compliance and quantitative anatomy not certified"
   }
 }

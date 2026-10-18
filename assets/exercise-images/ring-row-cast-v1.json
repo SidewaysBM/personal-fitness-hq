@@ -4,10 +4,10 @@
   "provenance": {
     "tool": "image_gen",
     "date": "2026-10-18",
-    "masterSha256": "4b4cb8a1c9f62bda6db18df45b533dbdd09205fc76b0eb0e7c64f1ef0cd56334",
-    "generation": "exec-f2b67597-8dc2-4a41-a830-03f5c6ae4dbe"
+    "masterSha256": "9901274949961d3eb7c99d07a652fcedf0c5c760ccbe8759fd3b972d1552aa1f",
+    "generation": "exec-948e254e-c781-4ff6-8af4-98a119e9c7ee"
   },
-  "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: FEET-ELEVATED RING ROW. Athlete faces ceiling, heels supported on stable low box, straight aligned trunk and legs, holds two suspended gymnastics rings with straps anchored overhead. Left frame arms straight up towards rings, shoulders low beneath them. Right frame elbows bend back, chest pulled up to rings; hips stay aligned, feet same box. Clear two hands in separate rings, show straps and heel support. Not a pushup or dip. Model: Latino female, age 50s, medium height and average build, fictional mass 77kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
+  "generationPrompt": "Correct only trunk rigidity in this feet elevated ring row. LEFT: raise the pelvis about 30 pixels so shoulder joint, hip joint, knee and ankle form a single straight line; no hips sagging. RIGHT: straighten trunk and legs into one line while chest comes to rings. Keep rings at precisely same height, same strap length and same heel contact position in both panels. Same woman outfit and camera. No text.",
   "promptHistory": {
     "prompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: FEET-ELEVATED RING ROW. Athlete faces ceiling, heels supported on stable low box, straight aligned trunk and legs, holds two suspended gymnastics rings with straps anchored overhead. Left frame arms straight up towards rings, shoulders low beneath them. Right frame elbows bend back, chest pulled up to rings; hips stay aligned, feet same box. Clear two hands in separate rings, show straps and heel support. Not a pushup or dip. Model: Latino female, age 50s, medium height and average build, fictional mass 77kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair.",
     "correction": null
@@ -25,7 +25,23 @@
   "export": {
     "format": "WebP",
     "quality": 88,
-    "bytes": 66098,
+    "bytes": 80550,
     "pixelDimensionsUnchanged": true
+  },
+  "previousGenerations": [
+    {
+      "provenance": {
+        "tool": "image_gen",
+        "date": "2026-10-18",
+        "masterSha256": "4b4cb8a1c9f62bda6db18df45b533dbdd09205fc76b0eb0e7c64f1ef0cd56334",
+        "generation": "exec-f2b67597-8dc2-4a41-a830-03f5c6ae4dbe"
+      },
+      "generationPrompt": "Use case scientific-educational. Original FORM fitness reference artwork. Wide 2:1 image split into TWO equal square panels, no written text, no labels, no arrows. SAME fictional model in both panels with identical face, clothes, bone lengths and equipment. Full body hands feet and required equipment visible with margins. Realistic 3D illustration, isometric/three-quarter view giving clear depth, neutral studio lighting, clean dark teal #10242e backdrop and floor, consistent camera and scale. Ordinary recreational gym-goer with natural softer proportions, no defined muscles or veins, no airbrushed advertising aesthetic, no caricature. Skin texture and age appropriate hair. Body weight is only an internal fictional design brief, not text in the image. Exact exercise poses: FEET-ELEVATED RING ROW. Athlete faces ceiling, heels supported on stable low box, straight aligned trunk and legs, holds two suspended gymnastics rings with straps anchored overhead. Left frame arms straight up towards rings, shoulders low beneath them. Right frame elbows bend back, chest pulled up to rings; hips stay aligned, feet same box. Clear two hands in separate rings, show straps and heel support. Not a pushup or dip. Model: Latino female, age 50s, medium height and average build, fictional mass 77kg. Outfit: plum tee and slate training bottoms, trainers. Leave generous margins around full body and equipment. Distinct ordinary face, practical hair."
+    }
+  ],
+  "mechanicsReview": {
+    "referenceGeneration": "exec-1de60b72-6195-4842-ad8a-df78002349ed.png",
+    "record": "docs/exercise-mechanics-review-2026-10-18.md",
+    "status": "Visual improvement; exact specification compliance and quantitative anatomy not certified"
   }
 }
