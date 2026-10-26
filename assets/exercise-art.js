@@ -21,7 +21,7 @@
     'back-squat': [['Stand', {...upright, far:'M96 73L77 94L69 75 M90 123L78 153L75 180',near:'M96 73L113 96L123 75 M90 123L103 153L105 180',equipment:bar(96,75)}], ['Lower & return', {...squat,equipment:bar(108,99)}]],
     'push-press': [['Shallow dip', {...dip,equipment:bar(100,78)}], ['Drive & press', {...overhead,equipment:bar(100,30)}]],
     'box-jumps': [['Load & take off', p([75,85],[65,103],[46,137], 'M65 103L39 117L25 108 M46 137L77 145L60 180', 'M65 103L40 127L22 123 M46 137L89 144L73 180',box(125,115,60,65))], ['Land on both feet',p([145,36],[138,54],[113,81],'M138 54L157 64L166 46 M113 81L150 87L144 109','M138 54L163 73L177 59 M113 81L164 89L155 109',box(125,115,60,65))]],
-    'tricep-extension': [['Bend elbows', p([105,64],[102,84],[99,129],'M102 84L86 39L77 73 M99 129L84 155L80 180','M102 84L97 35L79 72 M99 129L113 154L118 180',db(78,82,90))], ['Extend elbows',p([105,64],[102,84],[99,129],'M102 84L86 51L90 20 M99 129L84 155L80 180','M102 84L106 51L100 20 M99 129L113 154L118 180',db(94,27,90))]],
+    'tricep-extension': [['Bend working elbow', p([105,64],[102,84],[99,129],'M102 84L86 39L77 73 M99 129L84 155L80 180','M102 84L97 35L79 72 M99 129L113 154L118 180',db(78,82,90))], ['Extend working elbow',p([105,64],[102,84],[99,129],'M102 84L86 51L90 20 M99 129L84 155L80 180','M102 84L106 51L100 20 M99 129L113 154L118 180',db(94,27,90))]],
     'leg-raise': [['Still hang',p([95,66],[95,86],[95,130],'M95 86L76 51L74 20 M95 130L86 158L86 181','M95 86L111 51L112 20 M95 130L100 158L100 181',path('M48 20H142','#b6f47c',5))],['Raise straight legs',p([83,66],[83,86],[83,130],'M83 86L69 51L70 20 M83 130L124 126L163 126','M83 86L105 51L108 20 M83 130L124 136L168 136',path('M48 20H142','#b6f47c',5))]],
     'single-leg-squat': [['Front foot bears weight',p([53,48],[56,68],[66,116],'M56 68L40 90L26 72 M66 116L99 139L128 130','M56 68L75 91L85 72 M66 116L58 148L56 180',box(117,135,43,45)+bar(56,72))],['Lower over front leg',p([42,80],[50,98],[74,137],'M50 98L34 117L20 102 M74 137L104 156L128 130','M50 98L69 119L79 102 M74 137L40 145L53 180',box(117,135,43,45)+bar(50,102))]],
     'bench': [['Lower to chest',p([39,124],[57,126],[115,128],'M57 126L77 142L77 119 M115 128L144 147L151 177','M57 126L76 144L76 119 M115 128L133 148L141 180',bench+bar(76,119))],['Press upwards',p([39,124],[57,126],[115,128],'M57 126L67 94L78 57 M115 128L144 147L151 177','M57 126L66 94L76 57 M115 128L133 148L141 180',bench+bar(76,57))]],
@@ -229,7 +229,7 @@
     // Each panel clips one half of the original asset without changing its pixels.
     if(frames){
       const serial=++artworkSerial;
-      const asset=id==='single-leg-squat'?'single-leg-squat-isometric-v2.webp':id+'-cast-v1.webp';
+      const asset=id==='single-leg-squat'?'single-leg-squat-isometric-v2.webp':id==='tricep-extension'?'tricep-extension-single-arm-v2.webp':id+'-cast-v1.webp';
       const indices=sequence?[0,1]:[1];
       return `<svg class="movement-illustration isometric-art" viewBox="0 0 ${sequence?440:210} ${sequence?240:200}" role="img" aria-label="${safe}: ${indices.map(i=>frames[i][0]).join(' then ')}"><title>${safe} — three-quarter movement reference</title>`+indices.map((frame,i)=>{
         const clip=`form-iso-${serial}-${i}`;

@@ -18,7 +18,7 @@ const server=http.createServer((req,res)=>{
  const page=await browser.newPage();
  try{
  await page.goto(url);await page.locator('#desktopNav').getByRole('button',{name:'Exercises'}).click();
- await page.locator(`[data-guide="${id}"]`).click();await page.getByRole('button',{name:'Play demonstration',exact:true}).click();
+ await page.locator(`[data-guide="${id}"]`).click();if(await page.locator('.video-pending').count()){results.push({id,status:'WITHHELD',reason:await page.locator('.video-pending').innerText()});continue;}if(await page.locator('.video-external').count()){results.push({id,status:'EXTERNAL_ONLY',reason:'Publisher blocks embedding; link and playback require separate publisher-page verification.'});continue;}await page.getByRole('button',{name:'Play demonstration',exact:true}).click();
  const iframe=page.locator('.video-player iframe');
  const video=await iframe.count()?page.frameLocator('.video-player iframe').locator('video').first():page.locator('.video-player video');
  await video.waitFor({timeout:25000});
@@ -39,6 +39,6 @@ const server=http.createServer((req,res)=>{
  }}
  await Promise.all([worker(),worker(),worker()]);
  fs.writeFileSync('test-results/embedded-playback.json',JSON.stringify(results,null,2));
- if(results.some(r=>r.status!=='PASS'))process.exitCode=1;
+ if(results.some(r=>!['PASS','WITHHELD','EXTERNAL_ONLY'].includes(r.status)))process.exitCode=1;
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});

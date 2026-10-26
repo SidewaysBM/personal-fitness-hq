@@ -62,6 +62,10 @@ const server = http.createServer((req,res)=>{if(req.url.endsWith('manifest.webma
     const href=await image.getAttribute('href');
     await page.evaluate(async src=>{const img=new Image();img.src=src;await img.decode();if(img.naturalWidth<1000)throw Error('Reference image too small')},href);
   }
+  if(await dialog.locator('.video-pending').count()){
+   assert.equal(await dialog.locator('[data-video-link],[data-play-video]').count(),0);
+  }else if(await dialog.locator('.video-external').count()){assert.match(await dialog.locator('[data-video-link]').getAttribute('href'),/muscleandstrength.com\/exercises\/one-arm-dumbbell-extension/);assert.equal(await dialog.locator('[data-play-video],iframe,video').count(),0);
+  }else{
   const link=dialog.locator('[data-video-link]');assert.match(await link.getAttribute('href'),/^https:\/\//);
   assert.equal(await link.getAttribute('rel'),'noopener noreferrer');assert.equal(await dialog.locator('iframe,video').count(),0);
   assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth),`${name}: dialog overflow`);
@@ -73,6 +77,7 @@ const server = http.createServer((req,res)=>{if(req.url.endsWith('manifest.webma
   assert.equal(page.url(),initialUrl);assert.equal(context.pages().length,1);
   if(await dialog.locator('video').count())assert.equal(await player.getAttribute('playsinline'),'');
   assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth));
+  }
   if(i===0){
    assert.equal(await page.getByRole('dialog').count(),1);await page.getByRole('button',{name:'Close exercise guide'}).focus();
    await page.screenshot({path:`test-results/${name.replace(/[^a-z]/gi,'')}-${device.isMobile?'mobile':'desktop'}-guide.png`,fullPage:true});

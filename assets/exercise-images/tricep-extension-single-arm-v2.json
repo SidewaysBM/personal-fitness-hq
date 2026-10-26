@@ -1,0 +1,26 @@
+{
+  "exercise": "tricep-extension",
+  "asset": "tricep-extension-single-arm-v2.webp",
+  "provenance": {
+    "tool": "image_gen",
+    "date": "2026-10-26",
+    "generation": "exec-d27d1712-e81a-4fa8-ad98-29b0ffda86cf"
+  },
+  "generationPrompt": "Use case: precise-object-edit, scientific educational fitness illustration. Edit the supplied two-panel FORM exercise artwork. Preserve exactly the same fictional stocky middle-aged Black male model, slate blue tee, charcoal shorts, shoes, natural proportions, face, studio teal background, standing stance, full body framing, two equal square panels in a wide 2:1 image, camera and lighting. Correct ONLY the exercise from two-handed to SINGLE-ARM overhead dumbbell triceps extension. In BOTH frames the same right hand alone grips the dumbbell handle securely with a neutral wrist. The left arm hangs naturally beside the torso with the left hand beside the thigh, not touching the dumbbell. Left panel: right upper arm points upward beside the head, elbow bent, right forearm folds behind the head holding the single dumbbell, with safe clearance from head and neck. Right panel: the right elbow extends to raise that same dumbbell above the right shoulder, upper arm remains upright, wrist neutral, no torso arch. Show the whole dumbbell and hands and shoes with generous margins. Exactly two arms and two legs per person, no extra digits or disconnected equipment. Do not change model, stance or introduce bench. No text, arrows, panel numbers, logos, or prescription values. This illustrates one arm at a time; not both hands on one weight.",
+  "spec": {
+    "panels": 2,
+    "dimensions": [
+      1774,
+      887
+    ],
+    "designGuide": "docs/exercise-art-style-guide.md",
+    "anatomySpec": "EXERCISE_IMAGE_SPEC.md unavailable; exact compliance unverified"
+  },
+  "review": "One working hand grips the dumbbell in both frames; free arm lowered. Standing setup confirmed by user. Full body, hands and weight visible. General visual reference, not clinical certification.",
+  "export": {
+    "format": "WebP",
+    "quality": 88,
+    "bytes": 48438,
+    "pixelDimensionsUnchanged": true
+  }
+}
