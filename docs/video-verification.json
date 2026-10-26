@@ -78,14 +78,14 @@
   },
   {
     "id": "tricep-extension",
-    "target": "https://www.youtube.com/watch?v=xbNm9fRoUTw",
-    "status": "playback observed",
-    "duration": 36.361,
-    "currentTime": 13.086021,
-    "width": 1280,
+    "target": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-extension.html",
+    "status": "publisher-page playback observed; embedding blocked by publisher",
+    "duration": 36.010666,
+    "currentTime": 36.010666,
+    "width": 1920,
     "height": 720,
-    "checkedOn": "2026-10-17",
-    "scope": "Publisher identity, movement reference and actual video playback checked; not clinician approval of the individual prescription."
+    "checkedOn": "2026-10-26",
+    "scope": "Standing one-dumbbell single-arm overhead extension visually reviewed at extended and bent-elbow positions. User confirmed this variation. Link opens publisher page; embedded Vimeo playback is blocked by publisher privacy settings. Personal range and per-side rep accounting remain as prescribed."
   },
   {
     "id": "thruster",

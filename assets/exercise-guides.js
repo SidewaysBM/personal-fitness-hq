@@ -25,12 +25,12 @@
       'Drive off both feet and swing your arms forwards. Land with both feet on the box, bending your knees to absorb the landing.',
       'Stand balanced on the box, then step down carefully and reset.'
     ], 'Land quietly with knees tracking over toes. Reset each jump rather than bouncing off the floor.', 'https://www.crossfit.com/essentials/the-box-jump', 'CrossFit', 'The Box Jump', 'The reference includes jumping down; this guide shows a step-down reset. Follow your clinician’s prescribed return.'),
-    'tricep-extension': guide('Two hands holding one dumbbell', [
-      'Stand or sit upright and support one dumbbell securely with both hands overhead.',
-      'Keep your upper arms beside your head. Bend your elbows to lower the weight behind your head within your prescribed range.',
-      'Straighten your elbows to raise the dumbbell while keeping your trunk still.',
-      'Lower slowly for the next repetition. Keep the weight clear of your head and neck.'
-    ], 'Move at the elbows; avoid arching your back to lift the weight.', 'https://www.catalystathletics.com/exercise/828/Dumbbell-Overhead-Tricep-Extension/', 'Catalyst Athletics', 'Dumbbell Overhead Tricep Extension', 'Two-hand dumbbell example. The original name does not confirm equipment or whether one or two arms were prescribed.'),
+    'tricep-extension': guide('Standing single-arm overhead dumbbell extension', [
+      'Stand balanced with your trunk upright. Hold one dumbbell by its handle in one hand and bring it overhead. Keep your head neutral.',
+      'Keep the working upper arm beside your head. Bend that elbow to lower the dumbbell behind your head within your prescribed range; keep the weight clear of your head and neck.',
+      'Extend the working elbow smoothly to raise the dumbbell. Keep the upper arm and trunk steady and avoid forcing the elbow into lockout.',
+      'Lower under control. Work one arm at a time, then change sides according to your prescription. The other hand does not share the dumbbell load.'
+    ], 'One hand holds the dumbbell. Move at the working elbow without leaning back.', 'https://www.muscleandstrength.com/exercises/one-arm-dumbbell-extension.html', 'Muscle & Strength', 'One-Arm Standing Dumbbell Extension', 'Standing, one dumbbell and one arm at a time confirmed by the user on 26 October 2026. Saved sets, reps and loads remain unchanged; per-side rep accounting is not inferred.'),
     'leg-raise': guide('Straight-leg raise to hip height', [
       'Take a secure grip on the overhead bar and establish a still, supported hang.',
       'Keep your knees straight and lift both legs forwards from your hips towards an L shape, within your prescribed range.',
@@ -118,8 +118,8 @@
     "src": "https://www.youtube-nocookie.com/embed/9HNd6tmthjE?playsinline=1&rel=0"
   },
   "tricep-extension": {
-    "type": "iframe",
-    "src": "https://www.youtube-nocookie.com/embed/xbNm9fRoUTw?playsinline=1&rel=0"
+    "type": "external",
+    "src": "https://player.vimeo.com/video/756783880?h=37f9e187d3&dnt=1&playsinline=1"
   },
   "thruster": {
     "type": "iframe",

@@ -27,7 +27,7 @@
    const recorded=(log?.sets||[]).filter(s=>s.exerciseId===id).map(s=>s.index+1);
    e.sets=Math.max(e.sets,...recorded);return e;
   });
-  return {provenance:legacy?'legacy-reference':'recorded',routine:{id:routine?.id||'history',name:legacy?'Recorded session':routine.name,note:legacy?'Original prescriptions were not stored. Reference values shown are not verified historical targets.':routine.note,ids},exercises};
+  return {provenance:legacy?'legacy-reference':'recorded',routine:{...clone(routine||{}),id:routine?.id||'history',name:legacy?'Recorded session':routine.name,note:legacy?'Original prescriptions were not stored. Reference values shown are not verified historical targets.':routine.note,ids},exercises};
  }
  function preserve(data,profile){const next=clone(data);for(const date of Object.keys(next.logs))if(!next.logs[date].plan){const p=plan(data,profile,date);if(p)next.logs[date].plan=p}return next}
  function editRoutine(data,profile,id,change){
